@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Piecemaker>
+  <Contents>
+    <Image Source="images/office/DrGarzaOffice-3.jpg" Title="Optical store">
+      <Text>&lt;h1&gt;Optical store&lt;/h1&gt;&lt;p&gt;Dr. Garza carries a wide selection of designer frames and sunglasses. Get on his mailing list and attend his next "designer trunk show."&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-4.jpg" Title="Professional Staff">
+      <Text>&lt;h1&gt;Professional Staff&lt;/h1&gt;&lt;p&gt;Our office manager, Tammy McDaniel, is an ABO-certified Optician with over 20 years experience in family eye care. You'll love her as much as we do!&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-6.jpg" Title="The Latest Technology">
+      <Text>&lt;h1&gt;The Latest Technology&lt;/h1&gt;&lt;p&gt;Dr. Garza uses the latest technology to accurately diagnose your current vision condition. He will explain all your options and answer all your questions.&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-8.jpg" Title="Optomap Retinal Exam">
+      <Text>&lt;h1&gt;Optomap&#174; Retinal Exam&lt;/h1&gt;&lt;p&gt;Our office features the Optomap&#174; digital retinal imaging system as part of our comprehensive eye exam so you can make informed decisions about your eye health.&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-16.jpg" Title="Comprehensive Eye Exam">
+      <Text>&lt;h1&gt;Comprehensive Eye Exam&lt;/h1&gt;&lt;p&gt;Dr. Garza conducts every eye examination personally. He wants to get to know you, improved your vision, answer questions and enhance your quality of life.&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-18.jpg" Title="Glaucoma Screening">
+      <Text>&lt;h1&gt;Glaucoma Screening&lt;/h1&gt;&lt;p&gt;The only way to detect glaucoma is to test for it. Dr. Garza uses applanation tonometry, instead of air puffs, to precisely and comfortably screen patients.&lt;/p&gt;</Text>
+    </Image>
+    <Image Source="images/office/Dr Garza Office-13.jpg" Title="Kid Friendly">
+      <Text>&lt;h1&gt;Kid Friendly&lt;/h1&gt;&lt;p&gt;At Complete Family Eye Care, we specialize in children aged 3 years and up. Our pediatric eye chart features symbols for kids who don’t yet know their ABCs!&lt;/p&gt;</Text>
+    </Image>
+  </Contents>
+  <Settings
+            ImageWidth="600"
+            ImageHeight="400"
+            LoaderColor="0x333333"
+            InnerSideColor="0x222222"
+            SideShadowAlpha="0.8"
+            DropShadowAlpha="0.7"
+            DropShadowDistance="25"
+            DropShadowScale="0.95"
+            DropShadowBlurX="40"
+            DropShadowBlurY="4"
+            MenuDistanceX="20"
+            MenuDistanceY="50"
+            MenuColor1="0x999999"
+            MenuColor2="0x333333"
+            MenuColor3="0xFFFFFF"
+            ControlSize="100"
+            ControlDistance="20"
+            ControlColor1="0x222222"
+            ControlColor2="0xFFFFFF"
+            ControlAlpha="0.8"
+            ControlAlphaOver="0.95"
+            ControlsX="450"
+            ControlsY="280&#xD;&#xA;"
+            ControlsAlign="center"
+            TooltipHeight="30"
+            TooltipColor="0x222222"
+            TooltipTextY="5"
+            TooltipTextStyle="P-Italic"
+            TooltipTextColor="0xFFFFFF"
+            TooltipMarginLeft="5"
+            TooltipMarginRight="7"
+            TooltipTextSharpness="50"
+            TooltipTextThickness="-100"
+            InfoWidth="400"
+            InfoBackground="0xFFFFFF"
+            InfoBackgroundAlpha="0.95"
+            InfoMargin="15"
+            InfoSharpness="0"
+            InfoThickness="0"
+            Autoplay="2"
+            FieldOfView="45">
+  </Settings>
+  <Transitions>
+    <Transition Pieces="9" Time="1" Transition="easeInOutBack" Delay="0.1" DepthOffset="300" CubeDistance="30"></Transition>
+    <Transition Pieces="15" Time="1" Transition="easeInOutElastic" Delay="0.03" DepthOffset="200" CubeDistance="10"></Transition>
+    <Transition Pieces="5" Time="1" Transition="easeInOutCubic" Delay="0.1" DepthOffset="500" CubeDistance="50"></Transition>
+    <Transition Pieces="9" Time="1.25" Transition="easeInOutBack" Delay="0.1" DepthOffset="900" CubeDistance="5"></Transition>
+  </Transitions>
+</Piecemaker>

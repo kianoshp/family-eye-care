@@ -1,0 +1,27 @@
+		    <h2>The Human Eye</h2>
+		    <p class="right">The human eye has been called the most complex organ in our body.
+		    It's amazing that something so small can have so many working parts. But when you
+		    consider how difficult the task of providing vision really is, perhaps it's no wonder after all.</p>
+                    <div style="width: 45%; text-align: center; float: left;">
+    
+                            <div id="tdeonline"></div>
+                    </div>
+                    <script type="text/javascript">
+                       var so=new SWFObject("http://online.eyemaginations.com/online.swf","tdeyeonlineswf","301","300","8","#FFFFFF");
+                       so.addParam("wmode", "transparent");
+                       so.addVariable("aID","a36f9d0f02081143d2d6ed88cbe6ba6f");
+                       so.write("tdeonline");
+                    </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	    $('div#contentHolder').height($('div#contentHolder p').height() + $('embed#tdeyeonlineswf').height() + 45);
+		if ($.browser.msie) {
+		    console.log("I am here");
+		    $('div#contentHolder').height($('div#contentHolder').height() + 420);
+		    console.log("the new height is ==> " + $('div#contentHolder').height());
+		}
+
+	    $('#sideInfo').height($('#mainInfo').height() + 20);
+
+    });
+</script>

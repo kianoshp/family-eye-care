@@ -1,0 +1,309 @@
+html, body{
+    margin: 0;
+    padding: 2px 0px 0px 2px;
+    font-family: Geneva, Verdana, Trebuchet MS;
+    font-size: 9.5px;
+    background-color: #FFFAE8;
+}
+
+.footnote{
+    font-size:8.5px;
+}
+
+#pageContainer{
+    width: 1024px;
+    margin: auto;
+    background: url('../images/EyeChartSkewed15Color.jpg') no-repeat;
+    background-position: top right;
+}
+#header{
+    height: 50px;
+}
+
+#header #logo{
+    float: left;
+    width: 150px;
+    height: 85px;
+    /*border-bottom: solid rgb(157, 157, 157) 1px;
+    border-right: solid rgb(157, 157, 157) 1px;
+    padding: 0px 0px 0px 0px;
+    background-repeat: no-repeat;*/
+}
+
+/*#header #logo p{
+    padding: 2px 2px 2px 2px;
+    font-size: 12px;
+}*/
+
+#header #menu{
+    float: right;
+    padding-right: 125px;
+}
+
+/* Styles for the entire LavaLamp menu */
+#header #menu .lavaLamp {
+    position: relative;
+    height: 22px;
+    width: 425px;
+    /*background-color: white;*/
+    padding: 12px;
+    overflow: hidden;
+}
+    /* Force the list to flow horizontally */
+    #header #menu .lavaLamp li {
+        float: left;
+        list-style: none;
+    }
+        /* Represents the background of the highlighted menu-item. */
+        #header #menu .lavaLamp li.back {
+            border-bottom: 5px solid #202E6E;
+            width: 9px;
+            height: 30px;
+            z-index: 8;
+            position: absolute;
+        }
+        /* Styles for each menu-item. */
+        #header #menu .lavaLamp li a {
+            font: bold 11px arial;
+            text-decoration: none;
+            color: #202E6E;
+            outline: none;
+            text-align: center;
+            top: 7px;
+            text-transform: uppercase;
+            letter-spacing: 0;
+            z-index: 10;
+            display: block;
+            float: left;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            margin: auto 10px;
+        }
+            #header #menu .lavaLamp li a:hover {
+                border: none;
+                color: #A8A8A8;
+            }
+
+
+#content{
+    width: 1050px;
+    padding-top: 5px;
+    float: left;
+    clear: right;
+}
+
+#content .message a, #content #tabContent a,
+#content #mainInfo #text a {
+    color: #263889;
+    text-decoration: none;
+}
+
+#content .message a:hover, #content #tabContent a:hover,
+#content #mainInfo #text a:hover {
+    color: #202E6E;
+    text-decoration: underline;
+}
+
+#content #sideInfo{
+    /*font-size: 8px;*/
+    clear: both;
+    float: left;
+    width: 200px;
+    padding-left: 2px;
+    border-right: solid rgb(157, 157, 157) 1px;
+    border-top: solid rgb(157, 157, 157) 1px;
+}
+
+#content #sideInfo .message{
+    /*border: inset 2px;*/
+    padding: 0px 0px 0px 0px;
+    line-height: 1.5;
+}
+
+.last{
+    padding-bottom: 20px;
+}
+
+#content #sideInfo .message * p{
+    font-size: 11px;
+    margin-left: 10px;
+}
+
+#content #sideInfo .message h1{
+    font-size: 12px;
+    font-weight: bold;
+}
+
+
+#content #sideInfo .message li{
+    list-style: square;
+    padding: 0px;
+    margin-left: 0px;
+}
+
+#content #banner{
+    /*clear: both;*/
+    height: 300px;
+    width: auto;
+    text-align: right;
+    padding-left: 0px;
+    padding-right: 110px;
+}
+
+#content #mainInfo{
+    width: 750px;
+    height: auto;
+    min-height: 500px;
+    font-size: 12px;
+    margin-left: 210px;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+#content #mainInfo #text {
+    background-color: #FFFFFF;
+    padding: 15px;
+    min-height: 300px;
+    height: auto;
+}
+
+#content #mainInfo h2{
+    font-size: 17px;
+    color: #681000;
+}
+
+#content #mainInfo p h3{
+    font-size: 16px;
+    color: black;
+}
+
+#content #mainInfo p h4{
+    font-size: 15px;
+    color: rgb(0,139,139);
+}
+
+#content #mainInfo img {
+    padding: 5px 0px 5px 5px;
+}
+
+#content #mainInfo p img.left{
+    float: left;
+    border: 0;
+    padding: 2px;
+    padding-right: 25px;
+}
+
+.addBorder{
+  border: solid #A8A8A8 1px;
+}
+
+.right{
+    float: right;
+}
+
+#content #mainInfo * li{
+  list-style-type: none;
+}
+#footer{
+    background: #202E6E; /*url('../images/FooterBackground2.gif') no-repeat center;*/
+    width: 1024px;
+    height: 40px;
+    clear: both;
+}
+
+#footer p{
+    color: #A8A8A8;
+    font-size: 11px;
+    text-align: center;
+    vertical-align: middle;
+    margin: 0px auto;
+}
+
+#footer p a{
+    color: #A8A8A8;
+    text-decoration: none;
+}
+
+#footer p a:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+div.iconAddress{
+    width: 14px;
+    height: 14px;
+    background: url('../images/icons_smaller.jpg') no-repeat;
+    background-position: -10px -13px;
+    float:left;
+    padding: 5px;
+    text-align: center;
+}
+
+div.iconEmail{
+    width: 14px;
+    height: 13px;
+    background: url('../images/icons_smaller.jpg') no-repeat;
+    background-position: -62px -14px;
+    float:left;
+    padding: 5px;
+    text-align: center;
+}
+
+div.iconPhone{
+    width: 14px;
+    height: 13px;
+    background: url('../images/icons_smaller.jpg') no-repeat;
+    background-position: -116px -13px;
+    float:left;
+    padding: 5px;
+    text-align: center;
+}
+
+div.iconFax{
+    width: 14px;
+    height: 13px;
+    background: url('../images/icons_smaller.jpg') no-repeat;
+    background-position: -140px -13px;
+    float:left;
+    padding: 5px;
+    text-align: center;
+}
+
+a.boldbuttons{
+background: transparent url('../images/roundedge-brown-left.gif') no-repeat top left;
+display: block;
+float: right;
+font: bold 13px Arial; /* Change 13px as desired */
+line-height: 22px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 30px) */
+height: 30px; /* Height of button background height */
+padding-left: 8px; /* Width of left menu image */
+text-decoration: none;
+
+}
+
+a:link.boldbuttons, a:visited.boldbuttons, a:hover.boldbuttons, a:active.boldbuttons{
+color: white; /*button text color*/
+}
+
+a.boldbuttons span{
+background: transparent url('../images/roundedge-brown-right.gif') no-repeat top right;
+display: block;
+padding: 4px 10px 4px 2px; /*Set 10px to be equal or greater than'padding-left' value above*/
+}
+
+a:hover.boldbuttons{ /* Hover state CSS */
+text-decoration: underline;
+}
+
+
+.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+/*width: 100%;*/
+float:right;
+margin-right:75px;
+}
+
+.small {
+    font-size: 9px;
+}

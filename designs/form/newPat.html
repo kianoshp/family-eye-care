@@ -1,0 +1,2027 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Crystal PM Patient Forms</title>
+<script type="text/javascript" src="https://www.crystalpm.com/tabber.js"></script>
+
+<style type="text/css">
+	
+	/* Color up those tabs a bit */
+	body {
+		background-color: #FFFAE8;
+	}
+	
+	.tabberlive .tabbertabhide {
+		display:none;
+	}
+	.tabber {
+		display: none;
+	}
+	.tabberlive {
+		margin-top:1em;
+	}
+	ul.tabbernav {
+		border-bottom:1px solid #cccccc;
+		font-family:Verdana,sans-serif;
+		font-size:11px;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:bold;
+		line-height:normal;
+		margin:0pt;
+		padding:3px 0pt;
+	}
+	ul.tabbernav li {
+		display:inline;
+		list-style-image:none;
+		list-style-position:outside;
+		list-style-type:none;
+		margin:0pt;
+	}
+	ul.tabbernav li a {
+		background:#FFFAE8 none repeat scroll 0%;
+		border-color:#cccccc;
+		border-style:solid solid none;
+		border-width:1px 1px medium;
+		margin-left:3px;
+		padding:3px 0.5em;
+		text-decoration:none;
+	}
+	ul.tabbernav li a:link {
+		color: #7e6f25;
+	}
+	ul.tabbernav li a:visited {
+		color: #7e6f25;
+	}
+	ul.tabbernav li a:hover {
+		background:#e3e4c1 none repeat scroll 0%;
+		border-color:#aaaaaa;
+		color:#7e6f25;
+	}
+	ul.tabbernav li.tabberactive a {
+		color: #FFFAE8;
+		background-color:#7e6f25;
+		border-bottom:1px solid #7e6f25;
+	}
+	ul.tabbernav li.tabberactive a:hover {
+		background:#7e6f25 none repeat scroll 0%;
+		border-bottom:1px solid #7e6f25;
+		color:#FFFAE8;
+	}
+	.tabberlive .tabbertab {
+		border-color: #cccccc;
+		border-style:none solid solid;
+		border-width:0pt 1px 1px;
+		padding: 1px 0px 0px 0px;
+	}
+	.tabberlive .tabbertab h2 {
+		display:none;
+	}
+	.tabberlive .tabbertab h3 {
+		display:none;
+	}
+	#tab1.tabberlive {
+	}
+	#tab2.tabberlive {
+	}
+	#tab2.tabberlive .tabbertab {
+		height:200px;
+		overflow:auto;
+	}
+
+	
+	
+	/* Please include these styles with the form */
+	div.eeform {
+		width: 700px;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		font-weight: normal;
+		line-height: 25px;
+		
+		color: #000000;
+	}
+		
+		
+	div.eeform input, div.eeform textarea, div.eeform select {
+		padding: 2px;
+		margin: 6px 5px 0px 0px;
+		border: 1px solid #cccccc;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		line-height: 12px;
+	}
+	
+	div.eeform input.checkbox {
+		margin: 0px 2px 0px 5px;
+		border: 0px;
+	}
+		
+	div.eeform .padRight {
+		padding-right: 30px;
+	}
+
+	div.eeform .padLeft {
+		padding-left: 30px;
+	}
+	
+	div.eeform input.padLeft, div.eeform textarea.padLeft {
+		padding: 2px;
+		margin-left: 30px;
+	}
+	
+	div.eeform input.padRight, div.eeform textarea.padRight {
+		padding: 2px;
+		margin-right: 30px;
+	}
+
+
+	div.eeform fieldset {
+		margin: 15px 0px 0px 0px;
+		padding: 10px;
+		border: 0px solid #cccccc;
+		border-top-width: 1px;
+	}
+	
+	div.eeform fieldset legend {
+		color: #202E6E;
+		font-size: 12px;
+		font-weight: bold;
+		font-style: oblique;
+	}
+	
+	div.eeform hr {
+		margin: 15px 0px 15px 0px;
+		border: 0px;
+		height: 1px;
+		background-color: #cccccc;
+	}
+
+	#bdayexample {
+		font-size: 11px;
+		color: #999;
+	}
+	.example {
+		font-size: 11px;
+		color: #999;
+	}
+	div.eeform #bdayexample.error {
+		color: #f00;
+	}
+
+	.wide {
+		width: 400px;
+	}
+
+
+
+
+</style>
+    
+<script type="text/javascript">
+      function onSubmit(form) {
+        with (form) {
+	if(First.value==""){
+		alert("First Name is a required field.");
+		First.focus();
+		return false;
+        }
+	if(Last.value==""){
+		alert("Last Name is a required field.");
+		Last.focus();
+		return false;
+        }
+	if(Home.value==""){
+		alert("Home Phone number is a required field.");
+		Home.focus();
+		return false;
+        }
+	return true;
+	}
+	return false;
+      }
+
+     function validDate(temp){
+          // assuming yyyy-mm-dd format
+         if(temp.equals("--")) return true;
+          var dateArray =temp.split('/');
+          if (dateArray.length!=3) {
+            return false;                    
+          }
+          var yearValue = dateArray[0];
+          var monthValue = dateArray[1];
+          var dayValue = dateArray[2];
+          if (!isDate(yearValue,monthValue,dayValue)) {
+            return false;
+          }
+	return true;
+     }
+
+     function BillDiff(form){
+	if(form.billDiff.checked){
+		form.bFirst.value = form.First.value;
+		form.bTitle.value = form.Title.value;
+		form.bLast.value = form.Last.value;
+		form.bMiddle.value = form.Middle.value;
+		form.bSuffix.value = form.Suffix.value;
+		form.bAddress1.value = form.Address1.value;
+		form.bAddress2.value = form.Address2.value;
+		form.bCity.value = form.City.value;
+		form.bState.value = form.State.value;
+		form.bZipCode.value = form.ZipCode.value;
+		form.bHome.value = form.Home.value;
+		form.bWork.value = form.Work.value;
+	}else{
+		form.bFirst.value = "";
+		form.bTitle.value = "";
+		form.bLast.value = "";
+		form.bMiddle.value = "";
+		form.bSuffix.value = "";
+		form.bAddress1.value = "";
+		form.bAddress2.value = "";
+		form.bCity.value = "";
+		form.bState.value = "";
+		form.bZipCode.value = "";
+		form.bHome.value = "";
+		form.bWork.value = "";
+	}
+     }
+
+
+var dFilterStep;
+
+function dFilterStrip (dFilterTemp, dFilterMask)
+{
+    dFilterMask = replace(dFilterMask,'#','');
+    for (dFilterStep = 0; dFilterStep < dFilterMask.length++; dFilterStep++)
+		{
+		    dFilterTemp = replace(dFilterTemp,dFilterMask.substring(dFilterStep,dFilterStep+1),'');
+		}
+		return dFilterTemp;
+}
+
+function dFilterMax (dFilterMask)
+{
+ 		dFilterTemp = dFilterMask;
+    for (dFilterStep = 0; dFilterStep < (dFilterMask.length+1); dFilterStep++)
+		{
+		 		if (dFilterMask.charAt(dFilterStep)!='#')
+				{
+		        dFilterTemp = replace(dFilterTemp,dFilterMask.charAt(dFilterStep),'');
+				}
+		}
+		return dFilterTemp.length;
+}
+
+function dFilter (key, textbox, dFilterMask)
+{
+		dFilterNum = dFilterStrip(textbox.value, dFilterMask);
+		
+		if (key==9)
+		{
+		    return true;
+		}
+		else if (key==8&&dFilterNum.length!=0)
+		{
+		 	 	dFilterNum = dFilterNum.substring(0,dFilterNum.length-1);
+		}    else if ( (key>47&&key<58) && dFilterNum.length < dFilterMax(dFilterMask) )
+         dFilterNum=dFilterNum+String.fromCharCode(key);
+ else if ( (key>95&&key<106) && dFilterNum.length < dFilterMax(dFilterMask) )
+         dFilterNum=dFilterNum+String.fromCharCode(key-48);
+		var dFilterFinal='';
+    for (dFilterStep = 0; dFilterStep < dFilterMask.length; dFilterStep++)
+		{
+        if (dFilterMask.charAt(dFilterStep)=='#')
+				{
+					  if (dFilterNum.length!=0)
+					  {
+				        dFilterFinal = dFilterFinal + dFilterNum.charAt(0);
+					      dFilterNum = dFilterNum.substring(1,dFilterNum.length);
+					  }
+				    else
+				    {
+				        dFilterFinal = dFilterFinal + "";
+				    }
+				}
+		 		else if (dFilterMask.charAt(dFilterStep)!='#')
+				{
+				    dFilterFinal = dFilterFinal + dFilterMask.charAt(dFilterStep);
+				}
+//		    dFilterTemp = replace(dFilterTemp,dFilterMask.substring(dFilterStep,dFilterStep+1),'');
+		}
+		textbox.value = dFilterFinal;
+    return false;
+}
+
+function replace(fullString,text,by) {
+// Replaces text with by in string
+    var strLength = fullString.length, txtLength = text.length;
+    if ((strLength == 0) || (txtLength == 0)) return fullString;
+
+    var i = fullString.indexOf(text);
+    if ((!i) && (text != fullString.substring(0,txtLength))) return fullString;
+    if (i == -1) return fullString;
+
+    var newstr = fullString.substring(0,i) + by;
+
+    if (i+txtLength < strLength)
+        newstr += replace(fullString.substring(i+txtLength,strLength),text,by);
+
+    return newstr;
+}
+
+function checkEmail(temp) {
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(temp.value))
+return (true);
+return false;
+}
+
+</script> 
+
+</head>
+<body>
+<div class="eeform">
+
+
+<div style="text-align: center;"><a href="http://www.completefamilyeyecaretexas.com/"><img src="../images/logoWithColorBackground.gif" border="0" alt="Logo" width="175" height="81" /></a></div>
+
+<form name="myform" method="POST" ONSUBMIT="return onSubmit(this)" action="index.jsp">
+	<input type="hidden" name="crystalpmid" value=""><input type="hidden" name="id" value=""><input type="hidden" name="passcode" value="">
+	<input type="hidden" name="pageid" value="3">
+
+	<div class="tabber">
+	<div class="tabbertab">
+		<h2>Demographics</h2>
+		
+		<fieldset>
+		<legend>General Information</legend>
+		
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td style="line-height: 11px;">Title</td>
+
+				<td style="line-height: 11px;">First</td>
+				<td style="line-height: 11px;">Last</td>
+				<td style="line-height: 11px;">MI</td>
+				<td style="line-height: 11px;">Suffix</td>
+				<td style="line-height: 11px;">Nickname</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td>
+					<select name="Title">
+						<option value=""> </option>
+						<option value="Mr.">Mr.</option>
+						<option value="Mrs.">Mrs.</option>
+						<option value="Ms.">Ms.</option>
+						<option value="Dr.">Dr.</option>
+						<option value="Rev.">Rev.</option>
+					</select>
+
+				</td>
+				<td><input type="text" name="First" size="15" maxlength="30" /></td>
+				<td><input type="text" name="Last" size="15" maxlength="30" /></td>
+				<td><input type="text" name="Middle" size="1" maxlength="1" /></td>
+				<td><input type="text" name="Suffix" size="5" maxlength="10" /></td>
+				<td><input type="text" name="NickName" size="15" maxlength="15" /></td>
+			</tr>
+		</table>
+
+		
+		<table border="0" cellpadding="3" cellspacing="0">
+
+			<tr>
+				<td valign="top" align="right" width="100">Address: </td>
+				<td>
+					<input type="text" name="Address1" size="50" maxlength="50" />
+					<br />
+					<input type="text" name="Address2" size="50" maxlength="50" />
+				</td>
+			</tr>
+
+			<tr>
+
+				<td align="right">
+					City:
+				</td>
+				<td>
+					<input type="text" name="City" size="50" maxlength="40" />
+			
+					State
+					<select name="State">
+						<option value=""> </option>
+
+						<option value="OR">OR</option>
+
+						<option value="AK">AK</option>
+						<option value="AZ">AZ</option>
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+						<option value="CT">CT</option>
+
+						<option value="FL">FL</option>
+
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+						<option value="IA">IA</option>
+
+						<option value="KS">KS</option>
+
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+						<option value="ME">ME</option>
+						<option value="MD">MD</option>
+						<option value="MA">MA</option>
+
+						<option value="MI">MI</option>
+
+						<option value="MN">MN</option>
+						<option value="MS">MS</option>
+						<option value="MO">MO</option>
+						<option value="MT">MT</option>
+						<option value="NE">NE</option>
+
+						<option value="NV">NV</option>
+
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+						<option value="NM">NM</option>
+						<option value="NY">NY</option>
+						<option value="NC">NC</option>
+
+						<option value="ND">ND</option>
+
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+						<option value="SC">SC</option>
+
+						<option value="SD">SD</option>
+
+						<option value="TN">TN</option>
+						<option value="UT">UT</option>
+						<option value="VT">VT</option>
+						<option value="VI">VI</option>
+						<option value="VA">VA</option>
+
+						<option value="WA">WA</option>
+
+						<option value="WV">WV</option>
+						<option value="WI">WI</option>
+						<option value="WY">WY</option>
+					</select>
+					
+					Zip Code:
+					<input type="text" name="ZipCode" size="10" maxlength="10" />
+
+				</td>
+			</tr>
+
+			<tr>
+				<td align="right">
+					Home Phone:
+				</td>
+				<td>
+					<input type="text" name="Home" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-####');" />
+				</td>
+
+			</tr>
+			<tr>
+
+				<td align="right">
+					Work Phone:
+				</td>
+				<td>
+					<input type="text" name="Work" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+				</td>
+			</tr>
+
+			<tr>
+				<td align="right">
+
+					Other Phone:
+				</td>
+				<td>
+					<input type="text" name="Other" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+				</td>
+			</tr>
+			<tr>
+
+				<td align="right">
+					Alerts:
+				</td>
+
+				<td>
+					<input type="text" name="Alerts" size="40" maxlength="40" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+
+					Email:
+				</td>
+				<td>
+
+					<input type="text" name="Email" size="40" maxlength="40" />
+				</td>
+			</tr>
+		</table>
+
+		<hr />
+
+		<table cellpadding="0" cellspacing="5" broder="0">
+			<tr>
+				<td align="right" width="100">Birthday:</td>
+				<td>
+					<input type="text" name="Bday" size="10" maxlength="20" onBlur="bdayCheck(this);" onKeyDown="javascript:return dFilter (event.keyCode, this, '##-##-####');" />
+					<span id="bdayexample">(mm-dd-yyyy)</span>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">SSN:</td>
+				<td><input type="text" name="SSN" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '###-##-####');"></td>
+			</tr>
+			<tr>
+				<td align="right">Sex:</td>
+				<td>
+					<input type="radio" name="sex" value="M" style="margin-bottom: -4px;" class="checkbox" /> Male
+					<input type="radio" name="sex" value="F" style="margin-bottom: -4px;" class="checkbox" /> Female
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Email:</td>
+				<td>
+					<input type="text" name="Email" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Occupation:</td>
+				<td>
+					<input type="text" name="Occupation" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Employment Status:</td>
+				<td>
+					<input type="checkbox" name="employed"/>Employed
+					<input type="checkbox" name="fulltime"/>Full-Time Student
+					<input type="checkbox" name="parttime"/>Part-Time Student
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Marital Status:</td>
+				<td>
+					<select name="MStatus">
+						<option value=""></option>
+						<option value="Unknown">Unknown</option>
+						<option value="Single">Single</option>
+						<option value="Married">Married</option>
+						<option value="Separated">Separated</option>
+						<option value="Divorced">Divorced</option>
+						<option value="Widowed">Widowed</option>
+						<option value="Child">Child</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Employer/School Name:</td>
+				<td>
+					<input type="text" name="eSchool" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Primary Doctor:</td>
+				<td>
+					<select name="doctor">
+						<option value=""></option>
+						<option value="No Doctor Assigned">No Doctor Assigned</option>
+						<option value="1">Dr. Garza, Kenneth</option>	
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Misc/Guardian:</td>
+				<td>
+					<input type="text" name="misc" size="40" maxlength="40">
+				</td>
+			</tr>
+		</table>
+		</fieldset>
+		
+		
+		<fieldset>
+		<legend>Billing Information</legend>
+		
+		<table border="0" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td>
+					<input type="checkbox" class="checkbox" name="billDiff" OnClick="javascript:BillDiff(this.form);" />
+					Is The Billing Address the Same?
+				</td>
+			</tr>
+		</table>
+		
+		<hr />
+
+		<table border="0" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td style="line-height: 11px;">Title</td>
+				<td style="line-height: 11px;">First</td>
+				<td style="line-height: 11px;">Last</td>
+
+				<td style="line-height: 11px;">MI</td>
+				<td style="line-height: 11px;">Suffix</td>
+
+				<td style="line-height: 11px;">Nickname</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<select name="bTitle">
+
+						<option value=""> </option>
+						<option value="Mr.">Mr.</option>
+
+						<option value="Ms.">Ms.</option>
+					</select>
+				</td>
+				<td><input type="text" name="bFirst" size="15" maxlength="30" /></td>
+				<td><input type="text" name="bLast" size="15" maxlength="30" /></td>
+
+				<td><input type="text" name="bMiddle" size="1" maxlength="1" /></td>
+				<td><input type="text" name="bSuffix" size="5" maxlength="10" /></td>
+				<td><input type="text" name="bNickName" size="15" maxlength="15" /></td>
+
+			</tr>
+		</table>
+		
+		<table border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td valign="top" align="right" width="100">Address: </td>
+
+				<td>
+					<input type="text" name="bAddress1" size="50" maxlength="50" /><br />
+					<input type="text" name="bAddress2" size="50" maxlength="50" />
+
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					City:
+				</td>
+
+				<td>
+					<input type="text" name="bCity" size="50" maxlength="40" />
+			
+					State:
+					<select name="bState">
+
+						<option value=""> </option>
+						<option value="OR">OR</option>
+						<option value="AK">AK</option>
+						<option value="AZ">AZ</option>
+
+						<option value="CA">CA</option>
+						<option value="CO">CO</option>
+
+						<option value="CT">CT</option>
+						<option value="FL">FL</option>
+						<option value="GA">GA</option>
+						<option value="HI">HI</option>
+
+						<option value="ID">ID</option>
+						<option value="IL">IL</option>
+
+						<option value="IA">IA</option>
+						<option value="KS">KS</option>
+						<option value="KY">KY</option>
+						<option value="LA">LA</option>
+
+						<option value="ME">ME</option>
+						<option value="MD">MD</option>
+
+						<option value="MA">MA</option>
+						<option value="MI">MI</option>
+						<option value="MN">MN</option>
+						<option value="MS">MS</option>
+
+						<option value="MO">MO</option>
+						<option value="MT">MT</option>
+
+						<option value="NE">NE</option>
+						<option value="NV">NV</option>
+						<option value="NH">NH</option>
+						<option value="NJ">NJ</option>
+
+						<option value="NM">NM</option>
+						<option value="NY">NY</option>
+
+						<option value="NC">NC</option>
+						<option value="ND">ND</option>
+						<option value="OH">OH</option>
+						<option value="OK">OK</option>
+
+						<option value="PA">PA</option>
+						<option value="RI">RI</option>
+
+						<option value="SC">SC</option>
+						<option value="SD">SD</option>
+						<option value="TN">TN</option>
+						<option value="UT">UT</option>
+
+						<option value="VT">VT</option>
+						<option value="VI">VI</option>
+
+						<option value="VA">VA</option>
+						<option value="WA">WA</option>
+						<option value="WV">WV</option>
+						<option value="WI">WI</option>
+
+						<option value="WY">WY</option>
+					</select>
+
+					
+					Zip Code:
+					<input type="text" name="bZipCode" size="10" maxlength="10" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					Home Phone:
+				</td>
+
+				<td>
+
+					<input type="text" name="bHome" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-####');" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					Work Phone:
+				</td>
+				<td>
+
+					<input type="text" name="bWork" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+
+				</td>
+			</tr>
+		</table>
+
+		</fieldset>
+	</div> <!-- tabbertab -->
+	
+	<div class="tabbertab">
+		<h2>Insurance 1</h2>
+		<fieldset>
+			<legend>Insurance Information</legend>
+			<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td valign="top" align="right" width="135">Insurance Name: </td>
+					<td>
+						<select name="ins1_name">
+							<option value=""></option>
+							<option value="None">None</option>
+							<option value="9">Aetna</option>
+							<option value="18">Avesis</option>
+							<option value="7">Blue Cross Blue Sheild of Texas</option>
+							<option value="10">Cigna</option>
+							<option value="5">EyeMed</option>
+							<option value="11">Great West Health Care</option>
+							<option value="12">Humana</option>
+							<option value="13">Medicare</option>
+							<option value="14">MES Vision</option>
+							<option value="16">OptumHealth/Spectera</option>
+							<option value="15">Secure Horizons</option>
+							<option value="6">Superior Vision</option>
+							<option value="19">TRICARE South Region</option>
+							<option value="8">United Health Care</option>
+							<option value="4">Vision Service Plan</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Insurance ID:</td>
+					<td><input type="text" name="ins1_id" size="50" maxlength="50"><br></td>
+				</tr>
+				<tr>
+					<td align="right">Insurance Policy Group:</td>
+					<td><input type="text" name="ins1_pg" size="50" maxlength="50"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td align="right">Not Primary on Account:</td>
+					<td>
+						<input type="checkbox" name="ins1_not_primary"/>Not Primary
+						
+					</td>
+				</tr>
+			</table>
+
+			<fieldset>
+				<legend>Primary on Account</legend>
+	
+				<table border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td align="right">Name:</td>
+						<td><input type="text" name="ins1_p_name" size="50" maxlength="50"><span class="example">Last, First MI</span></td>
+					</tr>
+					<tr>
+						<td align="right">Relationship to Insured:</td>
+						<td>
+							<input type="radio" name="ins1_p_rel"/>Spouse 
+							<input type="radio" name="ins1_p_rel"/>Child
+							<input type="radio" name="ins1_p_rel"/>Other
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Sex:</td>
+						<td>
+							<input type="radio" name="ins1_p_sex" value="M"/> Male
+							<input type="radio" name="ins1_p_sex" value="F"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Address:</td>
+						<td><input type="text" name="ins1_p_addr" size="50" maxlength="50"/></td>
+					</tr>
+					<tr>
+						<td align="right">City:</td>
+						<td>
+							<input type="text" name="ins1_p_city" size="25" maxlength="50"/>
+							State: <input type="text" name="ins1_p_state" size="2" maxlength="2"/>
+							Zip: <input type="text" name="ins1_p_zip" size="10" maxlength="10"'>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Phone Number:</td>
+						<td>
+							<input type="text" name="ins1_p_ph" size="50" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');">
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Birthday:</td>
+						<td>
+							<input type="text" name="ins1_p_bday" size="10" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '##/##/####');">
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Employer/School:</td>
+						<td>
+							<input type="text" name="ins1_p_emp" size="50" maxlength="50">
+						</td>
+					</tr>
+		
+				</table>
+				
+			</fieldset>
+		</fieldset>
+		
+
+	</div><!-- tabbertab -->
+
+	<div class="tabbertab">
+		<h2>Insurance 2</h2>
+		<fieldset>
+			<legend>Insurance Information</legend>
+			<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td valign="top" align="right" width="135">Insurance Name: </td>
+					<td>
+						<select name="ins2_name">
+							<option value=""></option>
+							<option value="None">None</option>
+							<option value="9">Aetna</option>
+							<option value="18">Avesis</option>
+							<option value="7">Blue Cross Blue Sheild of Texas</option>
+							<option value="10">Cigna</option>
+							<option value="5">EyeMed</option>
+							<option value="11">Great West Health Care</option>
+							<option value="12">Humana</option>
+							<option value="13">Medicare</option>
+							<option value="14">MES Vision</option>
+							<option value="16">OptumHealth/Spectera</option>
+							<option value="15">Secure Horizons</option>
+							<option value="6">Superior Vision</option>
+							<option value="19">TRICARE South Region</option>
+							<option value="8">United Health Care</option>
+							<option value="4">Vision Service Plan</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Insurance ID:</td>
+					<td><input type="text" name="ins2_id" size="50" maxlength="50"><br></td>
+				</tr>
+				<tr>
+					<td align="right">Insurance Policy Group:</td>
+					<td><input type="text" name="ins2_pg" size="50" maxlength="50"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td align="right">Not Primary on Account:</td>
+					<td>
+						<input type="checkbox" name="ins2_not_primary"/>Not Primary
+						
+					</td>
+				</tr>
+			</table>
+
+			<fieldset>
+				<legend>Primary on Account</legend>
+	
+				<table border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td align="right">Name:</td>
+						<td><input type="text" name="ins2_p_name" size="50" maxlength="50"><span class="example">Last, First MI</span></td>
+					</tr>
+					<tr>
+						<td align="right">Relationship to Insured:</td>
+						<td>
+							<input type="radio" name="ins2_p_rel"/>Spouse 
+							<input type="radio" name="ins2_p_rel"/>Child
+							<input type="radio" name="ins2_p_rel"/>Other
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Sex:</td>
+						<td>
+							<input type="radio" name="ins2_p_sex" value="M"/> Male
+							<input type="radio" name="ins2_p_sex" value="F"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Address:</td>
+						<td><input type="text" name="ins2_p_addr" size="50" maxlength="50"/></td>
+					</tr>
+					<tr>
+						<td align="right">City:</td>
+						<td>
+							<input type="text" name="ins2_p_city" size="25" maxlength="50"/>
+							State: <input type="text" name="ins2_p_state" size="2" maxlength="2"/>
+							Zip: <input type="text" name="ins2_p_zip" size="10" maxlength="10" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Phone Number:</td>
+						<td>
+							<input type="text" name="ins2_p_ph" size="50" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Birthday:</td>
+						<td>
+							<input type="text" name="ins2_p_bday" size="10" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '##/##/####');" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Employer/School:</td>
+						<td>
+							<input type="text" name="ins2_p_emp" size="50" maxlength="50" />
+						</td>
+					</tr>
+		
+				</table>
+				
+			</fieldset>
+		</fieldset>
+		
+
+	</div><!-- tabbertab -->
+
+	<div class="tabbertab">
+	<h2>Medical History</h2><input type="hidden" name="med_tab"  value="History">
+
+	
+		<fieldset>
+		<legend>Your Medical Profile</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td width="150" align="right">Referred By:</td>
+					<td>
+						<select name="mc_4" size="1">
+							<option value=""> </option>
+							<option value="Insurance">Insurance</option>
+							<option value="None">None</option>
+							<option value="Marcy L. Berry, M.D.">Marcy L. Berry, M.D.</option>
+							<option value="Sarah E. Rylie, M.D.">Sarah E. Rylie, M.D.</option>
+							<option value="Paul Anthony, M.D.">Paul Anthony, M.D.</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Accompanied by:</td>
+					<td><input type="text" name='mc_839' size='16' /></td>
+				</tr>
+				<tr>
+					<td align="right">Relationship:</td>
+					<td><input type="text" name='mc_840' size='16' /></td>
+				</tr>
+				<tr>
+					<td align="right">Marital status:</td>
+					<td>
+						<select name="mc_825" size="1">
+							<option value=""> </option>
+							<option value="Married">Married</option>
+							<option value="Single">Single</option>
+							<option value="Divorced">Divorced</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Ethnicity</td>
+					<td>
+						<select name="mc_837" size="1">
+							<option value=""> </option>
+							<option value="Caucasian">Caucasian</option>
+							<option value="African American">African American</option>
+							<option value="Hispanic">Hispanic</option>
+							<option value="Other">Other</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Employer/School:</td>
+					<td>
+						<select name="mc_3" size="1">
+							<option value=""> </option>
+							<option value="Unknown">Unknown</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<!--td></td-->
+					<td colspan="2"><input type="checkbox" name="mc_838" />Patient of ours</td>
+				</tr>
+				<tr>
+					<td align="right">Occupation/Grade in school</td>
+					<td>
+						<select name="mc_2" size="1">
+							<option value=""> </option>
+							<option value="None reported">None reported</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="example">Hold down the CTRL key to select multiple items</td>
+				</tr
+				<tr>
+					<td align="right" valign="top">Hobbies:</td>
+					<td>
+						<select name="mc_7" multiple="multiple" size="10" class="wide">
+							<option value="Astronomy">Astronomy</option>
+							<option value="Art">Art</option>
+							<option value="Baseball">Baseball</option>
+							<option value="Boating">Boating</option>
+							<option value="Basketball">Basketball</option>
+							<option value="Cooking">Cooking</option>
+							<option value="Crafts">Crafts</option>
+							<option value="Dancing">Dancing</option>
+							<option value="Diving">Diving</option>
+							<option value="Football">Football</option>
+							<option value="Fishing">Fishing</option>
+							<option value="Golf">Golf</option>
+							<option value="Gardening">Gardening</option>
+							<option value="Horseback Riding">Horseback Riding</option>
+							<option value="Hunting">Hunting</option>
+							<option value="Models">Models</option>
+							<option value="Needlepoint">Needlepoint</option>
+							<option value="None">None</option>
+							<option value="Painting">Painting</option>
+							<option value="Photography">Photography</option>
+							<option value="Piano">Piano</option>
+							<option value="Reading">Reading</option>
+							<option value="Running">Running</option>
+							<option value="Roller Blading">Roller Blading</option>
+							<option value="Softball">Softball</option>
+							<option value="Sewing">Sewing</option>
+							<option value="Skiing">Skiing</option>
+							<option value="Soccer">Soccer</option>
+							<option value="Swimming">Swimming</option>
+							<option value="Tennis">Tennis</option>
+							<option value="Video Games">Video Games</option>
+							<option value="Woodworking">Woodworking</option>
+							<option value="None Listed">None Listed</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Medications:</td>
+					<td>
+						<select name="mc_17" multiple="multiple" size="10" class="wide">
+							<option value="None">None</option>
+							<option value="Abilify">Abilify</option>
+							<option value="Accupril">Accupril</option>
+							<option value="ACE Inhibitors">ACE Inhibitors</option>
+							<option value="Acetominophen">Acetominophen</option>
+							<option value="Acromycin">Acromycin</option>
+							<option value="Adderall">Adderall</option>
+							<option value="Advil">Advil</option>
+							<option value="Afrin">Afrin</option>
+							<option value="Albuterol">Albuterol</option>
+							<option value="Amoxicillin">Amoxicillin</option>
+							<option value="Ampicillin">Ampicillin</option>
+							<option value="Anafranil">Anafranil</option>
+							<option value="Anaprox">Anaprox</option>
+							<option value="Antibiotics">Antibiotics</option>
+							<option value="Antihistamines">Antihistamines</option>
+							<option value="Aspirin">Aspirin</option>
+							<option value="Atropine">Atropine</option>
+							<option value="Augmentin">Augmentin</option>
+							<option value="Avelox">Avelox</option>
+							<option value="Azithromycin">Azithromycin</option>
+							<option value="Bacitracin">Bacitracin</option>
+							<option value="Bactrim">Bactrim</option>
+							<option value="Benadryl">Benadryl</option>
+							<option value="Benzoil Peroxide">Benzoil Peroxide</option>
+							<option value="Benzomycin">Benzomycin</option>
+							<option value="Biaxin">Biaxin</option>
+							<option value="Birth control">Birth control</option>
+							<option value="Cardivol">Cardivol</option>
+							<option value="Ceclor">Ceclor</option>
+							<option value="Cefprozil">Cefprozil</option>
+							<option value="Ceftin">Ceftin</option>
+							<option value="Celebrex">Celebrex</option>
+							<option value="Cephalosporin">Cephalosporin</option>
+							<option value="Chloroquine">Chloroquine</option>
+							<option value="Ciprofloxacin">Ciprofloxacin</option>
+							<option value="Clarithromycin">Clarithromycin</option>
+							<option value="Claritin">Claritin</option>
+							<option value="Cleocin">Cleocin</option>
+							<option value="Clindomycin">Clindomycin</option>
+							<option value="Cliomycin">Cliomycin</option>
+							<option value="Codeine">Codeine</option>
+							<option value="Colymycin">Colymycin</option>
+							<option value="Compazine">Compazine</option>
+							<option value="Contrast dye">Contrast dye</option>
+							<option value="Coreg">Coreg</option>
+							<option value="Crestor">Crestor</option>
+							<option value="Cyclines">Cyclines</option>
+							<option value="Cymbalta">Cymbalta</option>
+							<option value="Darvon">Darvon</option>
+							<option value="Darvoset">Darvoset</option>
+							<option value="Daypro">Daypro</option>
+							<option value="Demerol">Demerol</option>
+							<option value="Dimetab">Dimetab</option>
+							<option value="Diovan">Diovan</option>
+							<option value="Doxycycline">Doxycycline</option>
+							<option value="Effexor">Effexor</option>
+							<option value="Entex">Entex</option>
+							<option value="Environmental">Environmental</option>
+							<option value="Ephedrine">Ephedrine</option>
+							<option value="Erythromycin">Erythromycin</option>
+							<option value="Flagil">Flagil</option>
+							<option value="Floxin">Floxin</option>
+							<option value="Fluorescein dye">Fluorescein dye</option>
+							<option value="Fluoroquinolones">Fluoroquinolones</option>
+							<option value="Haladol">Haladol</option>
+							<option value="Hormone replacement therapy">Hormone replacement therapy</option>
+							<option value="Humira">Humira</option>
+							<option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+							<option value="Hydroxazine">Hydroxazine</option>
+							<option value="Ibuprofen">Ibuprofen</option>
+							<option value="Ilisone">Ilisone</option>
+							<option value="Imitrex">Imitrex</option>
+							<option value="Imuran">Imuran</option>
+							<option value="Insulin">Insulin</option>
+							<option value="Iodine">Iodine</option>
+							<option value="IVP Dye">IVP Dye</option>
+							<option value="Keflex">Keflex</option>
+							<option value="Lamictal">Lamictal</option>
+							<option value="Lamisil">Lamisil</option>
+							<option value="Levoquin">Levoquin</option>
+							<option value="Lexapro">Lexapro</option>
+							<option value="Lipitor">Lipitor</option>
+							<option value="Liquid meds">Liquid meds</option>
+							<option value="Lisinopril">Lisinopril</option>
+							<option value="Macrobid">Macrobid</option>
+							<option value="Macrodantin">Macrodantin</option>
+							<option value="Maxalon">Maxalon</option>
+							<option value="Mercury">Mercury</option>
+							<option value="Metformin">Metformin</option>
+							<option value="Metronidazole">Metronidazole</option>
+							<option value="Minocin">Minocin</option>
+							<option value="Morphine">Morphine</option>
+							<option value="Motrin">Motrin</option>
+							<option value="Mycins">Mycins</option>
+							<option value="Naproxin">Naproxin</option>
+							<option value="Neomycin">Neomycin</option>
+							<option value="Neosporin">Neosporin</option>
+							<option value="Neurontin">Neurontin</option>
+							<option value="Nexium">Nexium</option>
+							<option value="Niacin">Niacin</option>
+							<option value="Nitrous Oxide">Nitrous Oxide</option>
+							<option value="Nizoral">Nizoral</option>
+							<option value="Novocaine">Novocaine</option>
+							<option value="NSAID's">NSAID's</option>
+							<option value="Oral contraceptives">Oral contraceptives</option>
+							<option value="PABA">PABA</option>
+							<option value="Penicillin">Penicillin</option>
+							<option value="Percoset">Percoset</option>
+							<option value="Phenergan">Phenergan</option>
+							<option value="Phenobarbital">Phenobarbital</option>
+							<option value="Phenolpropanolamine">Phenolpropanolamine</option>
+							<option value="Phenothiazines">Phenothiazines</option>
+							<option value="Pherenol">Pherenol</option>
+							<option value="Prevacid">Prevacid</option>
+							<option value="Propecia">Propecia</option>
+							<option value="Provigil">Provigil</option>
+							<option value="Pseudephedrine">Pseudephedrine</option>
+							<option value="Pseudofed">Pseudofed</option>
+							<option value="Quinine">Quinine</option>
+							<option value="Relafen">Relafen</option>
+							<option value="Remicade">Remicade</option>
+							<option value="Rifampin">Rifampin</option>
+							<option value="Risperdal">Risperdal</option>
+							<option value="Ritalin">Ritalin</option>
+							<option value="Seldane">Seldane</option>
+							<option value="Septra">Septra</option>
+							<option value="Stemetil">Stemetil</option>
+							<option value="Steroids">Steroids</option>
+							<option value="Succinylcholine">Succinylcholine</option>
+							<option value="Sulfa">Sulfa</option>
+							<option value="Synthroid">Synthroid</option>
+							<option value="Tagamet">Tagamet</option>
+							<option value="Tetanus Vaccine">Tetanus Vaccine</option>
+							<option value="Tetracycline">Tetracycline</option>
+							<option value="Thimerasol">Thimerasol</option>
+							<option value="Thorazine">Thorazine</option>
+							<option value="Trimethoprim">Trimethoprim</option>
+							<option value="Tylenol">Tylenol</option>
+							<option value="Valium">Valium</option>
+							<option value="Vancomycin">Vancomycin</option>
+							<option value="Vantin">Vantin</option>
+							<option value="Versed">Versed</option>
+							<option value="Vibramycin">Vibramycin</option>
+							<option value="Vicodin">Vicodin</option>
+							<option value="Vioxx">Vioxx</option>
+							<option value="Vitamins">Vitamins</option>
+							<option value="Voltaren">Voltaren</option>
+							<option value="Wellbutrin">Wellbutrin</option>
+							<option value="Xopenex">Xopenex</option>
+							<option value="Zestril">Zestril</option>
+							<option value="Zithromax">Zithromax</option>
+							<option value="Zoloft">Zoloft</option>
+							<option value="Zomig">Zomig</option>
+							<option value="Zyrtec">Zyrtec</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Allergies:</td>
+					<td>
+						<select name="mc_75" multiple="multiple" size="10" class="wide">
+							<option value="NKDA">NKDA</option>
+							<option value="Abilify">Abilify</option>
+							<option value="Accupril">Accupril</option>
+							<option value="ACE Inhibitors">ACE Inhibitors</option>
+							<option value="Acetominophen">Acetominophen</option>
+							<option value="Acromycin">Acromycin</option>
+							<option value="Adderall">Adderall</option>
+							<option value="Advil">Advil</option>
+							<option value="Afrin">Afrin</option>
+							<option value="Albuterol">Albuterol</option>
+							<option value="Amoxicillin">Amoxicillin</option>
+							<option value="Ampicillin">Ampicillin</option>
+							<option value="Anafranil">Anafranil</option>
+							<option value="Anaprox">Anaprox</option>
+							<option value="Antibiotics">Antibiotics</option>
+							<option value="Antihistamines">Antihistamines</option>
+							<option value="Aspirin">Aspirin</option>
+							<option value="Atropine">Atropine</option>
+							<option value="Augmentin">Augmentin</option>
+							<option value="Avelox">Avelox</option>
+							<option value="Azithromycin">Azithromycin</option>
+							<option value="Bacitracin">Bacitracin</option>
+							<option value="Bactrim">Bactrim</option>
+							<option value="Benadryl">Benadryl</option>
+							<option value="Benzoil Peroxide">Benzoil Peroxide</option>
+							<option value="Benzomycin">Benzomycin</option>
+							<option value="Biaxin">Biaxin</option>
+							<option value="Birth control">Birth control</option>
+							<option value="Cardivol">Cardivol</option>
+							<option value="Ceclor">Ceclor</option>
+							<option value="Cefprozil">Cefprozil</option>
+							<option value="Ceftin">Ceftin</option>
+							<option value="Celebrex">Celebrex</option>
+							<option value="Cephalosporin">Cephalosporin</option>
+							<option value="Chloroquine">Chloroquine</option>
+							<option value="Ciprofloxacin">Ciprofloxacin</option>
+							<option value="Clarithromycin">Clarithromycin</option>
+							<option value="Claritin">Claritin</option>
+							<option value="Cleocin">Cleocin</option>
+							<option value="Clindomycin">Clindomycin</option>
+							<option value="Cliomycin">Cliomycin</option>
+							<option value="Codeine">Codeine</option>
+							<option value="Colymycin">Colymycin</option>
+							<option value="Compazine">Compazine</option>
+							<option value="Contrast dye">Contrast dye</option>
+							<option value="Coreg">Coreg</option>
+							<option value="Crestor">Crestor</option>
+							<option value="Cyclines">Cyclines</option>
+							<option value="Cymbalta">Cymbalta</option>
+							<option value="Darvon">Darvon</option>
+							<option value="Darvoset">Darvoset</option>
+							<option value="Daypro">Daypro</option>
+							<option value="Demerol">Demerol</option>
+							<option value="Dimetab">Dimetab</option>
+							<option value="Diovan">Diovan</option>
+							<option value="Doxycycline">Doxycycline</option>
+							<option value="Effexor">Effexor</option>
+							<option value="Entex">Entex</option>
+							<option value="Environmental">Environmental</option>
+							<option value="Ephedrine">Ephedrine</option>
+							<option value="Erythromycin">Erythromycin</option>
+							<option value="Flagil">Flagil</option>
+							<option value="Floxin">Floxin</option>
+							<option value="Fluorescein dye">Fluorescein dye</option>
+							<option value="Fluoroquinolones">Fluoroquinolones</option>
+							<option value="Haladol">Haladol</option>
+							<option value="Hormone replacement therapy">Hormone replacement therapy</option>
+							<option value="Humira">Humira</option>
+							<option value="Hydrochlorothiazide">Hydrochlorothiazide</option>
+							<option value="Hydroxazine">Hydroxazine</option>
+							<option value="Ibuprofen">Ibuprofen</option>
+							<option value="Ilisone">Ilisone</option>
+							<option value="Imitrex">Imitrex</option>
+							<option value="Imuran">Imuran</option>
+							<option value="Insulin">Insulin</option>
+							<option value="Iodine">Iodine</option>
+							<option value="IVP Dye">IVP Dye</option>
+							<option value="Keflex">Keflex</option>
+							<option value="Lamictal">Lamictal</option>
+							<option value="Lamisil">Lamisil</option>
+							<option value="Levoquin">Levoquin</option>
+							<option value="Lexapro">Lexapro</option>
+							<option value="Lipitor">Lipitor</option>
+							<option value="Liquid meds">Liquid meds</option>
+							<option value="Macrobid">Macrobid</option>
+							<option value="Macrodantin">Macrodantin</option>
+							<option value="Maxalon">Maxalon</option>
+							<option value="Mercury">Mercury</option>
+							<option value="Metformin">Metformin</option>
+							<option value="Metronidazole">Metronidazole</option>
+							<option value="Minocin">Minocin</option>
+							<option value="Morphine">Morphine</option>
+							<option value="Motrin">Motrin</option>
+							<option value="Mycins">Mycins</option>
+							<option value="Naproxin">Naproxin</option>
+							<option value="Neomycin">Neomycin</option>
+							<option value="Neosporin">Neosporin</option>
+							<option value="Neurontin">Neurontin</option>
+							<option value="Nexium">Nexium</option>
+							<option value="Niacin">Niacin</option>
+							<option value="Nitrous Oxide">Nitrous Oxide</option>
+							<option value="Nizoral">Nizoral</option>
+							<option value="Novocaine">Novocaine</option>
+							<option value="NSAID's">NSAID's</option>
+							<option value="Oral contraceptives">Oral contraceptives</option>
+							<option value="PABA">PABA</option>
+							<option value="Penicillin">Penicillin</option>
+							<option value="Percoset">Percoset</option>
+							<option value="Phenergan">Phenergan</option>
+							<option value="Phenobarbital">Phenobarbital</option>
+							<option value="Phenolpropanolamine">Phenolpropanolamine</option>
+							<option value="Phenothiazines">Phenothiazines</option>
+							<option value="Pherenol">Pherenol</option>
+							<option value="Prevacid">Prevacid</option>
+							<option value="Propecia">Propecia</option>
+							<option value="Provigil">Provigil</option>
+							<option value="Pseudephedrine">Pseudephedrine</option>
+							<option value="Pseudofed">Pseudofed</option>
+							<option value="Quinine">Quinine</option>
+							<option value="Relafen">Relafen</option>
+							<option value="Remicade">Remicade</option>
+							<option value="Rifampin">Rifampin</option>
+							<option value="Risperdal">Risperdal</option>
+							<option value="Ritalin">Ritalin</option>
+							<option value="Seldane">Seldane</option>
+							<option value="Septra">Septra</option>
+							<option value="Stemetil">Stemetil</option>
+							<option value="Steroids">Steroids</option>
+							<option value="Succinylcholine">Succinylcholine</option>
+							<option value="Sulfa">Sulfa</option>
+							<option value="Synthroid">Synthroid</option>
+							<option value="Tagamet">Tagamet</option>
+							<option value="Tetanus Vaccine">Tetanus Vaccine</option>
+							<option value="Tetracycline">Tetracycline</option>
+							<option value="Thimerasol">Thimerasol</option>
+							<option value="Thorazine">Thorazine</option>
+							<option value="Trimethoprim">Trimethoprim</option>
+							<option value="Tylenol">Tylenol</option>
+							<option value="Valium">Valium</option>
+							<option value="Vancomycin">Vancomycin</option>
+							<option value="Vantin">Vantin</option>
+							<option value="Versed">Versed</option>
+							<option value="Vibramycin">Vibramycin</option>
+							<option value="Vicodin">Vicodin</option>
+							<option value="Vioxx">Vioxx</option>
+							<option value="Vitamins">Vitamins</option>
+							<option value="Voltaren">Voltaren</option>
+							<option value="Wellbutrin">Wellbutrin</option>
+							<option value="Xopenex">Xopenex</option>
+							<option value="Zestril">Zestril</option>
+							<option value="Zithromax">Zithromax</option>
+							<option value="Zoloft">Zoloft</option>
+							<option value="Zomig">Zomig</option>
+							<option value="Zyrtec">Zyrtec</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Past medical history:</td>
+					<td>
+						<select name="mc_18" multiple="multiple" size="10" class="wide">	
+							<option value="No problems reported">No problems reported</option>
+							<option value="Acne">Acne</option>
+							<option value="Acoustic neuroma">Acoustic neuroma</option>
+							<option value="ADD">ADD</option>
+							<option value="Addison's Disease">Addison's Disease</option>
+							<option value="Allergies/Hay fever">Allergies/Hay fever</option>
+							<option value="Alopecia">Alopecia</option>
+							<option value="Anemia">Anemia</option>
+							<option value="Angina">Angina</option>
+							<option value="Ankylosing spondylitis">Ankylosing spondylitis</option>
+							<option value="Anti-phospholipid Syndrome">Anti-phospholipid Syndrome</option>
+							<option value="Anxiety Disorder">Anxiety Disorder</option>
+							<option value="Aortic aneurysm">Aortic aneurysm</option>
+							<option value="Arthritis">Arthritis</option>
+							<option value="Arythmia">Arythmia</option>
+							<option value="Asher's Syndrome (RP)">Asher's Syndrome (RP)</option>
+							<option value="Asthma">Asthma</option>
+							<option value="Atrial fibrillation">Atrial fibrillation</option>
+							<option value="Bell's Palsy">Bell's Palsy</option>
+							<option value="Bipolar Disorder">Bipolar Disorder</option>
+							<option value="Blood clot">Blood clot</option>
+							<option value="BPH">BPH</option>
+							<option value="Bradycardia">Bradycardia</option>
+							<option value="Breast Cancer">Breast Cancer</option>
+							<option value="Bronchitis">Bronchitis</option>
+							<option value="C.V Neuralagia">C.V Neuralagia</option>
+							<option value="Cancer">Cancer</option>
+							<option value="Cardio Myopathy">Cardio Myopathy</option>
+							<option value="Cerebellar inbalance">Cerebellar inbalance</option>
+							<option value="Cerebral Palsy">Cerebral Palsy</option>
+							<option value="Chronic Glomeronephritis">Chronic Glomeronephritis</option>
+							<option value="Colitis">Colitis</option>
+							<option value="COPD">COPD</option>
+							<option value="Coronary Artery Disease">Coronary Artery Disease</option>
+							<option value="Crohn's Disease">Crohn's Disease</option>
+							<option value="Depression">Depression</option>
+							<option value="Dermatitis">Dermatitis</option>
+							<option value="Diverticulitis">Diverticulitis</option>
+							<option value="Dry Eyes">Dry Eyes</option>
+							<option value="Eating disorder">Eating disorder</option>
+							<option value="Eczema">Eczema</option>
+							<option value="Encephalitis">Encephalitis</option>
+							<option value="Epilepsy">Epilepsy</option>
+							<option value="Esophageal ulcer">Esophageal ulcer</option>
+							<option value="Fibromyalgia">Fibromyalgia</option>
+							<option value="Gastrointestinal Disorder">Gastrointestinal Disorder</option>
+							<option value="GERD">GERD</option>
+							<option value="Gestational diabetes">Gestational diabetes</option>
+							<option value="Glaucoma">Glaucoma</option>
+							<option value="Gout">Gout</option>
+							<option value="Grave's Disease">Grave's Disease</option>
+							<option value="Hashimoto's Thyroiditis">Hashimoto's Thyroiditis</option>
+							<option value="HAV">HAV</option>
+							<option value="HBV">HBV</option>
+							<option value="HCV">HCV</option>
+							<option value="Headaches">Headaches</option>
+							<option value="Heart Disease">Heart Disease</option>
+							<option value="Heart Murmur">Heart Murmur</option>
+							<option value="Hemochromatosis">Hemochromatosis</option>
+							<option value="High blood pressure">High blood pressure</option>
+							<option value="HIV">HIV</option>
+							<option value="HRT">HRT</option>
+							<option value="HSV">HSV</option>
+							<option value="HTN">HTN</option>
+							<option value="Hypercholesterolemia">Hypercholesterolemia</option>
+							<option value="Hyperglycemia">Hyperglycemia</option>
+							<option value="Hyperhydrosis">Hyperhydrosis</option>
+							<option value="Hyperthyroid">Hyperthyroid</option>
+							<option value="Hypoglycemia">Hypoglycemia</option>
+							<option value="Hypothyroid">Hypothyroid</option>
+							<option value="IDDM">IDDM</option>
+							<option value="Insomnia">Insomnia</option>
+							<option value="Irritable Bowel Syndrome">Irritable Bowel Syndrome</option>
+							<option value="Ischemic Heart Disease">Ischemic Heart Disease</option>
+							<option value="Kidney stones">Kidney stones</option>
+							<option value="Lactose Intolerant">Lactose Intolerant</option>
+							<option value="Leukemia">Leukemia</option>
+							<option value="Low Blood Pressure">Low Blood Pressure</option>
+							<option value="Lower Back Injury">Lower Back Injury</option>
+							<option value="Lumbar stenosis">Lumbar stenosis</option>
+							<option value="Lupus">Lupus</option>
+							<option value="Lymphoma">Lymphoma</option>
+							<option value="Malaria">Malaria</option>
+							<option value="Malignant Melanoma">Malignant Melanoma</option>
+							<option value="Meniere's Disease">Meniere's Disease</option>
+							<option value="Migraine Headaches">Migraine Headaches</option>
+							<option value="Mitral valve prolapse">Mitral valve prolapse</option>
+							<option value="Mood Disorder">Mood Disorder</option>
+							<option value="MS">MS</option>
+							<option value="Myasthenia gravis">Myasthenia gravis</option>
+							<option value="Myotonic Muscular Dystrophy">Myotonic Muscular Dystrophy</option>
+							<option value="Narcolepsy">Narcolepsy</option>
+							<option value="Neuralgia">Neuralgia</option>
+							<option value="Neuro-cardiogenic Syncope">Neuro-cardiogenic Syncope</option>
+							<option value="Neuropathy">Neuropathy</option>
+							<option value="NIDDM">NIDDM</option>
+							<option value="Non-Hodgkins Lymphoma">Non-Hodgkins Lymphoma</option>
+							<option value="Nursing">Nursing</option>
+							<option value="OCD">OCD</option>
+							<option value="Optic neuritis">Optic neuritis</option>
+							<option value="Osteopenia">Osteopenia</option>
+							<option value="Osteoporosis">Osteoporosis</option>
+							<option value="Parkinson's Disease">Parkinson's Disease</option>
+							<option value="Peptic Ulcer">Peptic Ulcer</option>
+							<option value="Perforated ulcer">Perforated ulcer</option>
+							<option value="Phlebitis">Phlebitis</option>
+							<option value="Pituitary tumor">Pituitary tumor</option>
+							<option value="PMS">PMS</option>
+							<option value="Polycystic Ovarian Syndrome">Polycystic Ovarian Syndrome</option>
+							<option value="Polycythemia rubravara">Polycythemia rubravara</option>
+							<option value="Polymyositis">Polymyositis</option>
+							<option value="Pregnant">Pregnant</option>
+							<option value="Prolactinoma">Prolactinoma</option>
+							<option value="Prostate cancer">Prostate cancer</option>
+							<option value="Prosthetic Heart Valve">Prosthetic Heart Valve</option>
+							<option value="Pseodotumor cerebri">Pseodotumor cerebri</option>
+							<option value="Psoriasis">Psoriasis</option>
+							<option value="Psychotic episodes">Psychotic episodes</option>
+							<option value="Recovering Alcoholic">Recovering Alcoholic</option>
+							<option value="Reiter Syndrome">Reiter Syndrome</option>
+							<option value="Respiratory problems">Respiratory problems</option>
+							<option value="Rheumatoid Arthritis">Rheumatoid Arthritis</option>
+							<option value="Rhinitis">Rhinitis</option>
+							<option value="Rosacea">Rosacea</option>
+							<option value="RP">RP</option>
+							<option value="Sarcoidosis">Sarcoidosis</option>
+							<option value="Schizophrenia">Schizophrenia</option>
+							<option value="Sciatica">Sciatica</option>
+							<option value="Seizures">Seizures</option>
+							<option value="Sinus problems">Sinus problems</option>
+							<option value="Sjogrens Syndrome">Sjogrens Syndrome</option>
+							<option value="Skin cancer">Skin cancer</option>
+							<option value="Sleep apnea">Sleep apnea</option>
+							<option value="Spinal cord injury">Spinal cord injury</option>
+							<option value="Stenosis">Stenosis</option>
+							<option value="Stomach Ulcer">Stomach Ulcer</option>
+							<option value="Stroke">Stroke</option>
+							<option value="Tachycardia">Tachycardia</option>
+							<option value="Thalassemia">Thalassemia</option>
+							<option value="Tinnitus">Tinnitus</option>
+							<option value="Toe fungus">Toe fungus</option>
+							<option value="Ulcerative colitis">Ulcerative colitis</option>
+							<option value="Urinary Incontinence">Urinary Incontinence</option>
+							<option value="Vascular Disease">Vascular Disease</option>
+							<option value="Vertigo">Vertigo</option>
+							<option value="Vitiligo">Vitiligo</option>
+							<option value="Von Willebrand Disorder">Von Willebrand Disorder</option>
+							<option value="Water Retention">Water Retention</option>
+							<option value="Wegener's Syndrome">Wegener's Syndrome</option>
+							<option value="Weight control">Weight control</option>
+							<option value="No problems reported">No problems reported</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Year diagnosed:</td>
+					<td><input type="text" name='mc_846' size='6' /></td>
+				</tr>
+				<tr>
+					<td align="right">Last BS:</td>
+					<td><input type="text" name='mc_848' size='5' /></td>
+				</tr>
+				<tr>
+					<td align="right">Date:</td>
+					<td><input type="text" name='mc_849' size='8' /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="mc_845" />Diabetic</td>
+				</tr>
+				<tr>
+					<td align="right">Last A1C:</td>
+					<td><input type="text" name='mc_850' size='5' /></td>
+				</tr>
+				<tr>
+					<td align="right">Date:</td>
+					<td><input type="text" name='mc_851' size='9' /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="mc_847" />Insulin</td>
+				</tr>
+				<tr>
+					<td align="right">Notes:</td>
+					<td><input type="text" name='mc_852' size='12' /></td>
+				</tr>
+				<tr>
+					<td align="right">OTC supplements:</td>
+					<td>
+						<select name="mc_226" size="1">
+							<option value=""> </option>
+							<option value="None">None</option>
+							<option value="Advil">Advil</option>
+							<option value="Asprin">Asprin</option>
+							<option value="Ibuprofen">Ibuprofen</option>
+							<option value="Multivitamin">Multivitamin</option>
+							<option value="Ocular vitamin">Ocular vitamin</option>
+							<option value="Omega-3">Omega-3</option>
+							<option value="Vitamin A">Vitamin A</option>
+							<option value="Vitamin B">Vitamin B</option>
+							<option value="Vitamin C">Vitamin C</option>
+							<option value="Vitamin D">Vitamin D</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Tobacco use:</td>
+					<td>
+						<select name="mc_853" size="1">
+							<option value=""> </option>
+							<option value="No">No</option>
+							<option value="Yes">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Year started:</td>
+					<td><input type="text" name='mc_854' size='7' /></td>
+				</tr>
+				<tr>
+					<td align="right">Alcohol use:</td>
+					<td>
+						<select name="mc_231" size="1">
+							<option value=""> </option>
+							<option value="None">None</option>
+							<option value="Rare">Rare</option>
+							<option value="Light">Light</option>
+							<option value="Moderate">Moderate</option>
+							<option value="Heavy">Heavy</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Illegal Drugs:</td>
+					<td>
+						<select name="mc_234" size="1">
+							<option value=""> </option>
+							<option value="none">none</option>
+							<option value="marijuana">marijuana</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Pregnant Or Nursing:</td>
+					<td>
+						<select name="mc_238" size="1">
+							<option value=""> </option>
+							<option value="No">No</option>
+							<option value="Yes">Yes</option>
+							<option value="Unsure">Unsure</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Due date/DOB:</td>
+					<td><input type="text" name='mc_856' size='12' /></td>
+				</tr>
+				<tr>
+					<td align="right">Blood-related family member medical problems:</td>
+					<td>
+						<select name="mc_74" size="1">
+							<option value=""> </option>
+							<option value="none">none</option>
+							<option value="Diabetes">Diabetes</option>
+							<option value="High cholesterol">High cholesterol</option>
+							<option value="High Blood Pressure">High Blood Pressure</option>
+							<option value="Rheumatoid Arthritis">Rheumatoid Arthritis</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Relationship:</td>
+					<td><input type="text" name='mc_865' size='30'></td>
+				</tr>
+				<tr>
+					<td align="right">Notes:</td>
+					<td><TEXTAREA name="mc_857" COLS=80 ROWS=2></TEXTAREA></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<input type="checkbox" name="mc_1265" />No Problems
+						<input type="checkbox" name="mc_1266" />Diabetes
+						<input type="checkbox" name="mc_1267" />High Blood Pressure
+						<input type="checkbox" name="mc_1268" />Cancer
+						<input type="checkbox" name="mc_1271" />Glaucoma
+						<input type="checkbox" name="mc_1272" />Amblyopia
+						<input type="checkbox" name="mc_1273" />Cataracts
+						<input type="checkbox" name="mc_1274" />Macular Degeneration
+						<input type="checkbox" name="mc_1275" />Strabismus (eye turn)
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+
+	<div class="tabbertab">
+	<h2>Visual History</h2><input type="hidden" name="med_tab"  value="Ocular">
+	<fieldset title="Medical History">
+		<legend>Visual History</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td colspan="3">Have you ever been diagnosed of any of the following:</td>
+					<td width="50">&nbsp;</td>
+					<td colspan="2">If yes, what eye?</td>
+				</tr>
+				<tr>
+					<td width="250"></td>
+					<td width="10"><b>Yes</b></td>
+					<td width="10"><b>No</b></td>
+					<td></td>
+					<td width="10"><b>Right</b></td>
+					<td width="20"><b>Left</b></td>
+				</tr>
+				<tr>
+					<td>Glaucoma</td>
+					<td><input type="checkbox" name="mc_1288" /></td>
+					<td><input type="checkbox" name="mc_1289" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1290" /></td>
+					<td><input type="checkbox" name="mc_1291" /></td>
+				</tr>
+				<tr>
+					<td>Amblyopia (lazy eye)</td>
+					<td><input type="checkbox" name="mc_1292" /></td>
+					<td><input type="checkbox" name="mc_1293" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1294" /></td>
+					<td><input type="checkbox" name="mc_1295" /></td>
+				</tr>
+				<tr>
+					<td>Cataract</td>
+					<td><input type="checkbox" name="mc_1296" /></td>
+					<td><input type="checkbox" name="mc_1297" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1298" /></td>
+					<td><input type="checkbox" name="mc_1299" /></td>
+				</tr>
+				<tr>
+					<td>Infalmmatory disorder</td>
+					<td><input type="checkbox" name="mc_1300" /></td>
+					<td><input type="checkbox" name="mc_1301" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1302" /></td>
+					<td><input type="checkbox" name="mc_1303" /></td>
+				</tr>
+				<tr>
+					<td>Retinal problems</td>
+					<td><input type="checkbox" name="mc_1304" /></td>
+					<td><input type="checkbox" name="mc_1305" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1306" /></td>
+					<td><input type="checkbox" name="mc_1307" /></td>
+				</tr>
+				<tr>
+					<td>Macular degeneration</td>
+					<td><input type="checkbox" name="mc_1308" /></td>
+					<td><input type="checkbox" name="mc_1309" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1310" /></td>
+					<td><input type="checkbox" name="mc_1311" /></td>
+				</tr>
+				<tr>
+					<td>Strabismus</td>
+					<td><input type="checkbox" name="mc_1312" /></td>
+					<td><input type="checkbox" name="mc_1313" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1314" /></td>
+					<td><input type="checkbox" name="mc_1315" /></td>
+				</tr>
+				<tr>
+					<td>Patching</td>
+					<td><input type="checkbox" name="mc_1316" /></td>
+					<td><input type="checkbox" name="mc_1317" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1318" /></td>
+					<td><input type="checkbox" name="mc_1319" /></td>
+				</tr>
+				<tr>
+					<td>Eye surgery (LASIK/cataract/retinal)</td>
+					<td><input type="checkbox" name="mc_1320" /></td>
+					<td><input type="checkbox" name="mc_1321" /></td>
+					<td>Date:<input type="text" name='mc_1332' size='10' /></td>
+					<td><input type="checkbox" name="mc_1322" /></td>
+					<td><input type="checkbox" name="mc_1323" /></td>
+				</tr>
+				<tr>
+					<td>Do you sometimes experience dry eyes</td>
+					<td><input type="checkbox" name="mc_1324" /></td>
+					<td><input type="checkbox" name="mc_1325" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Are your eyes sensitive ti sunlight?</td>
+					<td><input type="checkbox" name="mc_1328" /></td>
+					<td><input type="checkbox" name="mc_1329" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Do you work at a computer?</td>
+					<td><input type="checkbox" name="mc_1326" /></td>
+					<td><input type="checkbox" name="mc_1327" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Do you want information on LASIK surgery?</td>
+					<td><input type="checkbox" name="mc_1330" /></td>
+					<td><input type="checkbox" name="mc_1331" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td valign="top">Notes:</td>
+					<td colspan="5"><textarea cols="50" rows="5" name="mc_1336"></textarea></td>
+				</tr>
+			</table>
+	</fieldset>
+	<fieldset>
+			
+		<legend>Chief medical complaint</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td colspan="4">Please select all that apply:</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1339" />Loss of vision</td>
+					<td><input type="checkbox" name="mc_1340" />Blurred vision</td>
+					<td><input type="checkbox" name="mc_1341" />Double vision</td>
+					<td><input type="checkbox" name="mc_1342" />Floaters</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1343" />Crossed eyes</td>
+					<td><input type="checkbox" name="mc_1344" />Flashes of light</td>
+					<td><input type="checkbox" name="mc_1345" />Eye pain/soreness</td>
+					<td><input type="checkbox" name="mc_1346" />Watery eyes</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1347" />Sandy/gritty feeling</td>
+					<td><input type="checkbox" name="mc_1348" />Glare</td>
+					<td><input type="checkbox" name="mc_1349" />Light sensitivity</td>
+					<td><input type="checkbox" name="mc_1350" />Tired eyes</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1351" />Dry eyes</td>
+					<td><input type="checkbox" name="mc_1352" />Red eyes</td>
+					<td><input type="checkbox" name="mc_1353" />Burning/itching</td>
+					<td></td>
+				</tr>
+			</table>
+			
+			<table>
+				Please select all the symptoms that apply (hold the CTRL key to select multiple): <br/>
+				   <select name="mc_204" multiple="multiple" size="5" class="wide">
+					<option value="Blurry vision">Blurry vision</option>
+					<option value="Blurred Distance Vision">Blurred Distance Vision</option>
+					<option value="Blurred Near Vision">Blurred Near Vision</option>
+					<option value="Blurry with glasses">Blurry with glasses</option>
+					<option value="Burning">Burning</option>
+					<option value="CL stuck in eye">CL stuck in eye</option>
+					<option value="Corneal ulcer">Corneal ulcer</option>
+					<option value="Diabetes">Diabetes</option>
+					<option value="Discharge">Discharge</option>
+					<option value="Discomfort">Discomfort</option>
+					<option value="Dizziness">Dizziness</option>
+					<option value="Dry eyes">Dry eyes</option>
+					<option value="Eye fatigue">Eye fatigue</option>
+					<option value="Flashing light">Flashing light</option>
+					<option value="Floaters">Floaters</option>
+					<option value="Foreign body sensation">Foreign body sensation</option>
+					<option value="Glaucoma suspect">Glaucoma suspect</option>
+					<option value="Halo around lights">Halo around lights</option>
+					<option value="Headaches">Headaches</option>
+					<option value="Ingrown lash">Ingrown lash</option>
+					<option value="Irritation">Irritation</option>
+					<option value="Itchy eyes">Itchy eyes</option>
+					<option value="Lid twitch">Lid twitch</option>
+					<option value="Light sensitive">Light sensitive</option>
+					<option value="Photophobia">Photophobia</option>
+					<option value="Prior cataract surgery">Prior cataract surgery</option>
+					<option value="Recurrent erosion">Recurrent erosion</option>
+					<option value="Red eye">Red eye</option>
+					<option value="Retinal image">Retinal image</option>
+					<option value="Scratched cornea">Scratched cornea</option>
+					<option value="Stye">Stye</option>
+					<option value="Swollen lid">Swollen lid</option>
+					<option value="Vertigo">Vertigo</option>
+					<option value="Vision loss">Vision loss</option>
+					<option value="Watery eyes">Watery eyes</option>
+				  </select>
+			</table>
+			<hr/>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td width="250">Which eye has the problem?</td>
+					<td>
+						<input type="checkbox" name="mc_1230" />Right
+						<input type="checkbox" name="mc_1231" />Left
+						<input type="checkbox" name="mc_1232" />Both
+					</td>
+				</tr>
+				<tr>
+					<td>Is it new, ongoing, or returning?</td>
+					<td>
+						<input type="checkbox" name="mc_1234" />New
+						<input type="checkbox" name="mc_1235" />Ongoing
+						<input type="checkbox" name="mc_1236" />Returning
+					</td>
+				</tr>
+				<tr>
+					<td>How is it effecting you??</td>
+					<td>
+						<input type="checkbox" name="mc_1238" />Bothersome
+						<input type="checkbox" name="mc_1239" />Aware
+						<input type="checkbox" name="mc_1240" />Painful
+					</td>
+				</tr>
+				<tr>
+					<td>Associated with:
+					<td colspan="2">
+						<input type="checkbox" name="mc_1242" />Infection
+						<input type="checkbox" name="mc_1243" />Medical condition
+						<input type="checkbox" name="mc_1244" />Injury
+						<input type="checkbox" name="mc_1245" />Surgery						
+					</td>
+				</tr>
+				<tr>
+					<td>How severe is the problem?</td>
+					<td>
+						<input type="checkbox" name="mc_1247" />Mild
+						<input type="checkbox" name="mc_1248" />Moderate
+						<input type="checkbox" name="mc_1249" />Severe
+					</td>
+				</tr>
+				<tr>
+					<td>Anything help improve or worsen symptoms?</td>
+					<td>
+						<input type="checkbox" name="mc_1251" />Drops
+						<input type="checkbox" name="mc_1252" />Medication
+						&nbsp;Other: <input type="text" name='mc_1253' size='32' />
+					</td>
+				</tr>
+			</table>
+	</fieldset>
+	</div> <!-- tabbertab -->
+	
+	<div class="tabbertab">
+		<h2>Submit Information</h2>
+		<fieldset>
+
+		<legend>Review</legend>
+		
+			<p>
+				Thank you for taking the time to fill out our online
+				Health History form. You may click on the tabs
+				above to review the information you have provided.
+				Click on the button below to submit your information.
+			</p>
+			<p>
+				<input type="submit" value="Submit Data">
+			</p>
+		</fieldset>
+	</div> <!-- tabbertab -->
+
+	
+</div>
+
+</form>
+
+</div> <!-- eeform class -->
+</body>
+</html>

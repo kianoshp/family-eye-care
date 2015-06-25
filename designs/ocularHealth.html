@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta content="Welcome to Complete Eye Care of Texas, Dr. Kenneth Garza O.D. in Plano Texas!Our office is committed to providing comprehensive eye care of the highest quality to you and your family. We promise to thoroughly explain your eye health status and vision needs with an emphasis on preventative care. Our goal is to improve your quality of life through better vision. We always recommend the best treatments and products available for your specific lifestyle. We strive to exceed your expectations at every level of service and value." name="description">
+    <meta content="complete family eye care plano tx, dr. kenneth garza, dr garza optometrist plano tx, eye doctor, optometrist" name="keywords">
+    <title>Complete Family Eye Care of Texas - Dr. Kenneth Garza O.D.</title>
+    <link rel="shortcut icon" href="images/favicon.ico" />
+    <script type="text/javascript" src="js/swfobject.js"></script>     
+    <style type="text/css" media="all">
+    @import "css/master.css";
+    @import "css/jquery.fancybox-1.3.1.css";
+    @import "css/styles.css";
+    </style>
+<!--[if IE 7]> <style type="text/css">@import "css/masterIE7.css";</style> <![endif]-->
+</head>
+<body>
+    <!-- Insert your content here -->
+    <div id="pageContainer">
+        <div id="header">
+            <div id="logo">
+                <p><a href="index.html"><img src="images/logoWithColorBackground.gif" width="175" height="81" border="0"/></a>
+                </p>
+            </div>
+            <div id="menu">
+                <ul class="lavaLamp">
+                    <li><a href="index.html">welcome</a></li>
+                    <li><a href="contactUs.html">contact us</a></li>
+                    <li class="current"><a href="ocularHealth.html">eye health</a></li>
+                    <li><a href="forms.html">forms</a></li>
+		    <li><a href="experience.html">gallery</a></li>
+                </ul>
+            </div>
+        </div>
+	<div id="content">
+            <div id="sideInfo">
+                <div class="message">
+                    <p><h1>Our Address</h1></p>
+        		    <p><strong>Complete Family Eye Care</strong><br/>
+                    2100 Hedgcoxe Road Suite 140<br/>
+                    Plano, Texas 75025<br/>
+
+                    <a class="iframe" href="http://maps.google.com/?q=2100+Hedgcoxe+Rd+Suite+140+Plano+TX(Complete+Family+Eye+Care)&iwloc=A&f=d&z=15&cid=3252373750836779776">Click here for directions</a>
+
+                    </p>
+                </div>
+                <br/>
+                <hr/>
+                <div class="message">
+                    <p>
+                        <table border="0" cellpadding="1">
+                            <tr>
+                                <td colspan="2"><h1>Our Hours</h1></td>
+                            </tr>
+                            <tr>
+                                <td class="small"><b>Monday - Friday:</b></td><td class="small">8:30AM - 5:30PM</td>
+                            </tr>
+                            <tr>
+                                <td class="small"><b>Tuesdays:</b></td><td class="small">10:00AM - 7:00PM</td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="small"><b>1st & 3rd Wednesday & Saturday:</b></td>
+                            </tr>
+			    <tr>
+				<td></td><td class="small">8:30AM - 12:30PM</td>
+			    </tr>
+                        </table>
+                    </p>
+                </div>
+                <br/>
+                <hr/>
+                <div class="message last">
+                    <p>
+                        <h1>Contact us:</h1>
+                        <table border="0">
+			    <tr>
+    				<td><div class="iconEmail"></div></td><td><a href="mailto:info@completefamilyeyecaretexas.com">Email Us</a></td>
+			    </tr>
+			    <tr>
+	    			<td><div class="iconPhone"</td><td>972-527-2020 <br/>(Appointments & Optical)</td>
+			    </tr>
+			    <tr>
+				<td><div class="iconFax"</td><td>972-527-2022 <br/>(Fax)</td>
+			    </tr>
+                        </table>
+
+                    </p>
+                </div>
+            </div>
+	    <div id="mainInfo">
+		<h2>Eye Health Information</h2>
+
+		<ul class="tabContainer">
+			<!-- The jQuery generated tabs go here -->
+		</ul>
+		
+		<div class="clear"></div>
+		
+		<div id="tabContent">
+			<div id="contentHolder">
+				<!-- The AJAX fetched content goes here -->
+			</div>
+		</div>
+	    </div>
+	<br/>
+	</div>
+        <div id="footer"><br/><p><a href="index.html">Welcome</a> | <a href="contactUs.html">Contact Us</a> | <a href="ocularHealth.html">Eye Health</a> | <a href="forms.html">Forms</a></p></div>
+    </div>
+</body>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.1.js"></script>
+<script type="text/javascript" src="js/jquery.lavalamp.js"></script>
+<script type="text/javascript" src="js/jquery.fancybox-1.3.1.pack.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+<script type="text/javascript">
+    $(function() { $(".lavaLamp").lavaLamp({ fx: "backout", speed: 1400 })});
+    $(document).ready(function(){
+       $("a.iframe").fancybox({
+            'hideOnContentClick': false,
+            'width': 800,
+            'height': 500
+       });
+       $("a#inline").fancybox({
+	    'hideOnContentClick': true
+	});
+
+	$('#sideInfo').height($('#mainInfo').height() + 20);
+
+    });
+
+    /* Defining an array with the tab text and AJAX pages: */
+    var Tabs = {
+	    'Eye information'	: 'pages/eyeInformation.html',
+	    'Cataracts'	: 'pages/cataracts.html',
+	    'Contact Lens': 'pages/contactLens.html',
+	    'Glaucoma': 'pages/glaucoma.html'
+    }
+    
+    /* The available colors for the tabs: */
+    var colors = ['brown', 'brown', 'brown', 'brown'];
+    
+    /* The colors of the line above the tab when it is active: */
+    var topLineColor = {
+	    brown:'brown',
+	    brown:'brown',
+	    brown:'brown',
+	    brown:'brown'
+    }
+	$('#header #menu .lavaLamp li a').hover(
+						function(){
+						    $('#header #menu .lavaLamp li.back').css('border-bottom', '5px solid #A8A8A8');						    
+						},
+						function(){
+						    $('#header #menu .lavaLamp li.back').css('border-bottom', '5px solid #202E6E');
+						}
+	);
+
+</script>
+</html>

@@ -1,0 +1,24 @@
+		    <h2>Glaucoma</h2>
+		    <p class="right">Glaucoma information will go here!!</p>
+                    <div style="width: 45%; text-align: center; float: left;">
+    
+                            <div id="tdeonline"></div>
+                    </div>
+                    <script type="text/javascript">
+                       var so=new SWFObject("http://online.eyemaginations.com/online.swf","tdeyeonlineswf","301","300","8","#FFFFFF");
+                       so.addParam("wmode", "transparent");
+                       so.addVariable("aID","30dc982cf8d865cd6dfa0aab65c4de0b");
+                       so.write("tdeonline");
+                    </script>
+<script type="text/javascript">
+    $(document).ready(function(){
+	    $('div#contentHolder').height($('div#contentHolder p').height() + $('embed#tdeyeonlineswf').height() + 45);
+		if ($.browser.msie) {
+		    console.log("I am here");
+		    $('div#contentHolder').height($('div#contentHolder').height() + 420);
+		    console.log("the new height is ==> " + $('div#contentHolder').height());
+		}
+	    $('#sideInfo').height($('#mainInfo').height() + 20);
+    });
+</script>
+		    

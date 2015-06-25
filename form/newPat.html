@@ -1,0 +1,1493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Crystal PM Patient Forms</title>
+<script type="text/javascript" src="https://www.crystalpm.com/tabber.js"></script>
+
+<style type="text/css">
+	
+	/* Color up those tabs a bit */
+	body {
+		background-color: #d8e0f7;
+	}
+	
+	select.setWidth {
+		width: 270px;
+	}
+	
+	select.setWidthSmall {
+		width: 220px;
+	}
+
+	.tabberlive .tabbertabhide {
+		display:none;
+	}
+	.tabber {
+		display: none;
+	}
+	.tabberlive {
+		margin-top:1em;
+	}
+	ul.tabbernav {
+		border-bottom:1px solid #cccccc;
+		font-family:Verdana,sans-serif;
+		font-size:11px;
+		font-size-adjust:none;
+		font-stretch:normal;
+		font-style:normal;
+		font-variant:normal;
+		font-weight:bold;
+		line-height:normal;
+		margin:0pt;
+		padding:3px 0pt;
+	}
+	ul.tabbernav li {
+		display:inline;
+		list-style-image:none;
+		list-style-position:outside;
+		list-style-type:none;
+		margin:0pt;
+	}
+	ul.tabbernav li a {
+		background:#d8e0f7 none repeat scroll 0%;
+		border-color:#cccccc;
+		border-style:solid solid none;
+		border-width:1px 1px medium;
+		margin-left:3px;
+		padding:3px 0.5em;
+		text-decoration:none;
+	}
+	ul.tabbernav li a:link {
+		color: #375786;
+	}
+	ul.tabbernav li a:visited {
+		color: #375786;
+	}
+	ul.tabbernav li a:hover {
+		background:#bac1d5 none repeat scroll 0%;
+		border-color:#aaaaaa;
+		color:#375786;
+	}
+	ul.tabbernav li.tabberactive a {
+		color: #d8e0f7;
+		background-color:#375786;
+		border-bottom:1px solid #375786;
+	}
+	ul.tabbernav li.tabberactive a:hover {
+		background:#375786 none repeat scroll 0%;
+		border-bottom:1px solid #375786;
+		color:#d8e0f7;
+	}
+	.tabberlive .tabbertab {
+		border-color: #cccccc;
+		border-style:none solid solid;
+		border-width:0pt 1px 1px;
+		padding: 1px 0px 0px 0px;
+	}
+	.tabberlive .tabbertab h2 {
+		display:none;
+	}
+	.tabberlive .tabbertab h3 {
+		display:none;
+	}
+	#tab1.tabberlive {
+	}
+	#tab2.tabberlive {
+	}
+	#tab2.tabberlive .tabbertab {
+		height:200px;
+		overflow:auto;
+	}
+
+	
+	
+	/* Please include these styles with the form */
+	div.eeform {
+		width: 700px;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		font-weight: normal;
+		line-height: 25px;
+		
+		color: #000000;
+	}
+		
+		
+	div.eeform input, div.eeform textarea, div.eeform select {
+		padding: 2px;
+		margin: 6px 5px 0px 0px;
+		border: 1px solid #cccccc;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		line-height: 12px;
+	}
+	
+	div.eeform input.checkbox {
+		margin: 0px 2px 0px 5px;
+		border: 0px;
+	}
+		
+	div.eeform .padRight {
+		padding-right: 30px;
+	}
+
+	div.eeform .padLeft {
+		padding-left: 30px;
+	}
+	
+	div.eeform input.padLeft, div.eeform textarea.padLeft {
+		padding: 2px;
+		margin-left: 30px;
+	}
+	
+	div.eeform input.padRight, div.eeform textarea.padRight {
+		padding: 2px;
+		margin-right: 30px;
+	}
+
+
+	div.eeform fieldset {
+		margin: 15px 0px 0px 0px;
+		padding: 10px;
+		border: 0px solid #cccccc;
+		border-top-width: 1px;
+	}
+	
+	div.eeform fieldset legend {
+		color: #202E6E;
+		font-size: 12px;
+		font-weight: bold;
+		font-style: oblique;
+	}
+	
+	div.eeform hr {
+		margin: 15px 0px 15px 0px;
+		border: 0px;
+		height: 1px;
+		background-color: #cccccc;
+	}
+
+	#bdayexample {
+		font-size: 11px;
+		color: #999;
+	}
+	.example {
+		font-size: 11px;
+		color: #999;
+	}
+	div.eeform #bdayexample.error {
+		color: #f00;
+	}
+
+	.wide {
+		width: 400px;
+	}
+
+
+
+
+</style>
+    
+<script type="text/javascript">
+      function onSubmit(form) {
+        with (form) {
+	if(First.value==""){
+		alert("First Name is a required field.");
+		First.focus();
+		return false;
+        }
+	if(Last.value==""){
+		alert("Last Name is a required field.");
+		Last.focus();
+		return false;
+        }
+	if(Home.value==""){
+		alert("Home Phone number is a required field.");
+		Home.focus();
+		return false;
+        }
+	return true;
+	}
+	return false;
+      }
+
+     function validDate(temp){
+          // assuming yyyy-mm-dd format
+         if(temp.equals("--")) return true;
+          var dateArray =temp.split('/');
+          if (dateArray.length!=3) {
+            return false;                    
+          }
+          var yearValue = dateArray[0];
+          var monthValue = dateArray[1];
+          var dayValue = dateArray[2];
+          if (!isDate(yearValue,monthValue,dayValue)) {
+            return false;
+          }
+	return true;
+     }
+
+     function BillDiff(form){
+	if(form.billDiff.checked){
+		form.bFirst.value = form.First.value;
+		form.bTitle.value = form.Title.value;
+		form.bLast.value = form.Last.value;
+		form.bMiddle.value = form.Middle.value;
+		form.bSuffix.value = form.Suffix.value;
+		form.bAddress1.value = form.Address1.value;
+		form.bAddress2.value = form.Address2.value;
+		form.bCity.value = form.City.value;
+		form.bState.value = form.State.value;
+		form.bZipCode.value = form.ZipCode.value;
+		form.bHome.value = form.Home.value;
+		form.bWork.value = form.Work.value;
+	}else{
+		form.bFirst.value = "";
+		form.bTitle.value = "";
+		form.bLast.value = "";
+		form.bMiddle.value = "";
+		form.bSuffix.value = "";
+		form.bAddress1.value = "";
+		form.bAddress2.value = "";
+		form.bCity.value = "";
+		form.bState.value = "";
+		form.bZipCode.value = "";
+		form.bHome.value = "";
+		form.bWork.value = "";
+	}
+     }
+
+
+var dFilterStep;
+
+function dFilterStrip (dFilterTemp, dFilterMask)
+{
+    dFilterMask = replace(dFilterMask,'#','');
+    for (dFilterStep = 0; dFilterStep < dFilterMask.length++; dFilterStep++)
+		{
+		    dFilterTemp = replace(dFilterTemp,dFilterMask.substring(dFilterStep,dFilterStep+1),'');
+		}
+		return dFilterTemp;
+}
+
+function dFilterMax (dFilterMask)
+{
+ 		dFilterTemp = dFilterMask;
+    for (dFilterStep = 0; dFilterStep < (dFilterMask.length+1); dFilterStep++)
+		{
+		 		if (dFilterMask.charAt(dFilterStep)!='#')
+				{
+		        dFilterTemp = replace(dFilterTemp,dFilterMask.charAt(dFilterStep),'');
+				}
+		}
+		return dFilterTemp.length;
+}
+
+function dFilter (key, textbox, dFilterMask)
+{
+		dFilterNum = dFilterStrip(textbox.value, dFilterMask);
+		
+		if (key==9)
+		{
+		    return true;
+		}
+		else if (key==8&&dFilterNum.length!=0)
+		{
+		 	 	dFilterNum = dFilterNum.substring(0,dFilterNum.length-1);
+		}    else if ( (key>47&&key<58) && dFilterNum.length < dFilterMax(dFilterMask) )
+         dFilterNum=dFilterNum+String.fromCharCode(key);
+ else if ( (key>95&&key<106) && dFilterNum.length < dFilterMax(dFilterMask) )
+         dFilterNum=dFilterNum+String.fromCharCode(key-48);
+		var dFilterFinal='';
+    for (dFilterStep = 0; dFilterStep < dFilterMask.length; dFilterStep++)
+		{
+        if (dFilterMask.charAt(dFilterStep)=='#')
+				{
+					  if (dFilterNum.length!=0)
+					  {
+				        dFilterFinal = dFilterFinal + dFilterNum.charAt(0);
+					      dFilterNum = dFilterNum.substring(1,dFilterNum.length);
+					  }
+				    else
+				    {
+				        dFilterFinal = dFilterFinal + "";
+				    }
+				}
+		 		else if (dFilterMask.charAt(dFilterStep)!='#')
+				{
+				    dFilterFinal = dFilterFinal + dFilterMask.charAt(dFilterStep);
+				}
+//		    dFilterTemp = replace(dFilterTemp,dFilterMask.substring(dFilterStep,dFilterStep+1),'');
+		}
+		textbox.value = dFilterFinal;
+    return false;
+}
+
+function replace(fullString,text,by) {
+// Replaces text with by in string
+    var strLength = fullString.length, txtLength = text.length;
+    if ((strLength == 0) || (txtLength == 0)) return fullString;
+
+    var i = fullString.indexOf(text);
+    if ((!i) && (text != fullString.substring(0,txtLength))) return fullString;
+    if (i == -1) return fullString;
+
+    var newstr = fullString.substring(0,i) + by;
+
+    if (i+txtLength < strLength)
+        newstr += replace(fullString.substring(i+txtLength,strLength),text,by);
+
+    return newstr;
+}
+
+function checkEmail(temp) {
+if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(temp.value))
+return (true);
+return false;
+}
+
+</script> 
+
+</head>
+<body>
+<div class="eeform">
+
+
+<div style="text-align: center; height:60px; padding-top: 20px;"><a href="http://www.completefamilyeyecaretexas.com/"><img src="../images/logo.png" border="0" alt="Logo" width="200" /></a></div>
+
+<form name="myform" method="POST" ONSUBMIT="return onSubmit(this)" action="index.jsp">
+	<input type="hidden" name="crystalpmid" value=""><input type="hidden" name="id" value=""><input type="hidden" name="passcode" value="">
+	<input type="hidden" name="pageid" value="3">
+
+	<div class="tabber">
+	<div class="tabbertab">
+		<h2>Demographics</h2>
+		
+		<fieldset>
+		<legend>General Information</legend>
+		
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td style="line-height: 11px;">Title</td>
+
+				<td style="line-height: 11px;">First</td>
+				<td style="line-height: 11px;">Last</td>
+				<td style="line-height: 11px;">MI</td>
+				<td style="line-height: 11px;">Suffix</td>
+				<td style="line-height: 11px;">Nickname</td>
+			</tr>
+
+			<tr>
+				<td></td>
+				<td>
+					<select name="Title">
+						<option value=""> </option>
+						<option value="Mr.">Mr.</option>
+						<option value="Mrs.">Mrs.</option>
+						<option value="Ms.">Ms.</option>
+						<option value="Dr.">Dr.</option>
+						<option value="Rev.">Rev.</option>
+					</select>
+
+				</td>
+				<td><input type="text" name="First" size="15" maxlength="30" /></td>
+				<td><input type="text" name="Last" size="15" maxlength="30" /></td>
+				<td><input type="text" name="Middle" size="1" maxlength="1" /></td>
+				<td><input type="text" name="Suffix" size="5" maxlength="10" /></td>
+				<td><input type="text" name="NickName" size="15" maxlength="15" /></td>
+			</tr>
+		</table>
+
+		
+		<table border="0" cellpadding="3" cellspacing="0">
+
+			<tr>
+				<td valign="top" align="right" width="100">Address: </td>
+				<td>
+					<input type="text" name="Address1" size="50" maxlength="50" />
+					<br />
+					<input type="text" name="Address2" size="50" maxlength="50" />
+				</td>
+			</tr>
+
+			<tr>
+
+				<td align="right">
+					City:
+				</td>
+				<td>
+					<input type="text" name="City" size="50" maxlength="40" />
+			
+					State
+					<select name="State">
+						<option value="">Select a state</option>
+						<option value="AL">Alabama</option> 
+						<option value="AK">Alaska</option> 
+						<option value="AZ">Arizona</option> 
+						<option value="AR">Arkansas</option> 
+						<option value="CA">California</option> 
+						<option value="CO">Colorado</option> 
+						<option value="CT">Connecticut</option> 
+						<option value="DE">Delaware</option> 
+						<option value="DC">District Of Columbia</option> 
+						<option value="FL">Florida</option> 
+						<option value="GA">Georgia</option> 
+						<option value="HI">Hawaii</option> 
+						<option value="ID">Idaho</option> 
+						<option value="IL">Illinois</option> 
+						<option value="IN">Indiana</option> 
+						<option value="IA">Iowa</option> 
+						<option value="KS">Kansas</option> 
+						<option value="KY">Kentucky</option> 
+						<option value="LA">Louisiana</option> 
+						<option value="ME">Maine</option> 
+						<option value="MD">Maryland</option> 
+						<option value="MA">Massachusetts</option> 
+						<option value="MI">Michigan</option> 
+						<option value="MN">Minnesota</option> 
+						<option value="MS">Mississippi</option> 
+						<option value="MO">Missouri</option> 
+						<option value="MT">Montana</option> 
+						<option value="NE">Nebraska</option> 
+						<option value="NV">Nevada</option> 
+						<option value="NH">New Hampshire</option> 
+						<option value="NJ">New Jersey</option> 
+						<option value="NM">New Mexico</option> 
+						<option value="NY">New York</option> 
+						<option value="NC">North Carolina</option> 
+						<option value="ND">North Dakota</option> 
+						<option value="OH">Ohio</option> 
+						<option value="OK">Oklahoma</option> 
+						<option value="OR">Oregon</option> 
+						<option value="PA">Pennsylvania</option> 
+						<option value="RI">Rhode Island</option> 
+						<option value="SC">South Carolina</option> 
+						<option value="SD">South Dakota</option> 
+						<option value="TN">Tennessee</option> 
+						<option value="TX">Texas</option> 
+						<option value="UT">Utah</option> 
+						<option value="VT">Vermont</option> 
+						<option value="VA">Virginia</option> 
+						<option value="WA">Washington</option> 
+						<option value="WV">West Virginia</option> 
+						<option value="WI">Wisconsin</option> 
+						<option value="WY">Wyoming</option>
+					</select>
+					
+					Zip Code:
+					<input type="text" name="ZipCode" size="10" maxlength="10" />
+
+				</td>
+			</tr>
+
+			<tr>
+				<td align="right">
+					Home Phone:
+				</td>
+				<td>
+					<input type="text" name="Home" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-####');" />
+				</td>
+
+			</tr>
+			<tr>
+
+				<td align="right">
+					Work Phone:
+				</td>
+				<td>
+					<input type="text" name="Work" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+				</td>
+			</tr>
+
+			<tr>
+				<td align="right">
+
+					Other Phone:
+				</td>
+				<td>
+					<input type="text" name="Other" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+				</td>
+			</tr>
+			<tr>
+
+				<td align="right">
+					Alerts:
+				</td>
+
+				<td>
+					<input type="text" name="Alerts" size="40" maxlength="40" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+
+					Email:
+				</td>
+				<td>
+
+					<input type="text" name="Email" size="40" maxlength="40" />
+				</td>
+			</tr>
+		</table>
+
+		<hr />
+
+		<table cellpadding="0" cellspacing="5" broder="0">
+			<tr>
+				<td align="right" width="100">Birthday:</td>
+				<td>
+					<input type="text" name="Bday" size="10" maxlength="20" onBlur="bdayCheck(this);" onKeyDown="javascript:return dFilter (event.keyCode, this, '##-##-####');" />
+					<span id="bdayexample">(mm-dd-yyyy)</span>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">SSN:</td>
+				<td><input type="text" name="SSN" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '###-##-####');"></td>
+			</tr>
+			<tr>
+				<td align="right">Sex:</td>
+				<td>
+					<input type="radio" name="sex" value="M" style="margin-bottom: -4px;" class="checkbox" /> Male
+					<input type="radio" name="sex" value="F" style="margin-bottom: -4px;" class="checkbox" /> Female
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Email:</td>
+				<td>
+					<input type="text" name="Email" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Occupation:</td>
+				<td>
+					<input type="text" name="Occupation" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Employment Status:</td>
+				<td>
+					<input type="checkbox" name="employed"/>Employed
+					<input type="checkbox" name="fulltime"/>Full-Time Student
+					<input type="checkbox" name="parttime"/>Part-Time Student
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Marital Status:</td>
+				<td>
+					<select name="MStatus" class="setWidthSmall">
+						<option value=""></option>
+						<option value="Unknown">Unknown</option>
+						<option value="Single">Single</option>
+						<option value="Married">Married</option>
+						<option value="Separated">Separated</option>
+						<option value="Divorced">Divorced</option>
+						<option value="Widowed">Widowed</option>
+						<option value="Child">Child</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Employer/School Name:</td>
+				<td>
+					<input type="text" name="eSchool" size="40" maxlength="40">
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Primary Doctor:</td>
+				<td>
+					<select name="doctor" class="setWidthSmall">
+						<option value=""></option>
+						<option value="No Doctor Assigned">No Doctor Assigned</option>
+						<option value="1">Dr. Garza, Kenneth</option>	
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td align="right">Misc/Guardian:</td>
+				<td>
+					<input type="text" name="misc" size="40" maxlength="40">
+				</td>
+			</tr>
+		</table>
+		</fieldset>
+		
+		
+		<fieldset>
+		<legend>Billing Information</legend>
+		
+		<table border="0" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td>
+					<input type="checkbox" class="checkbox" name="billDiff" OnClick="javascript:BillDiff(this.form);" />
+					Is The Billing Address the Same?
+				</td>
+			</tr>
+		</table>
+		
+		<hr />
+
+		<table border="0" cellpadding="0" cellspacing="0">
+
+			<tr>
+				<td width="100">&nbsp;</td>
+				<td style="line-height: 11px;">Title</td>
+				<td style="line-height: 11px;">First</td>
+				<td style="line-height: 11px;">Last</td>
+
+				<td style="line-height: 11px;">MI</td>
+				<td style="line-height: 11px;">Suffix</td>
+
+				<td style="line-height: 11px;">Nickname</td>
+			</tr>
+			<tr>
+				<td></td>
+				<td>
+					<select name="bTitle">
+
+						<option value=""> </option>
+						<option value="Mr.">Mr.</option>
+
+						<option value="Ms.">Ms.</option>
+					</select>
+				</td>
+				<td><input type="text" name="bFirst" size="15" maxlength="30" /></td>
+				<td><input type="text" name="bLast" size="15" maxlength="30" /></td>
+
+				<td><input type="text" name="bMiddle" size="1" maxlength="1" /></td>
+				<td><input type="text" name="bSuffix" size="5" maxlength="10" /></td>
+				<td><input type="text" name="bNickName" size="15" maxlength="15" /></td>
+
+			</tr>
+		</table>
+		
+		<table border="0" cellpadding="3" cellspacing="0">
+			<tr>
+				<td valign="top" align="right" width="100">Address: </td>
+
+				<td>
+					<input type="text" name="bAddress1" size="50" maxlength="50" /><br />
+					<input type="text" name="bAddress2" size="50" maxlength="50" />
+
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					City:
+				</td>
+
+				<td>
+					<input type="text" name="bCity" size="50" maxlength="40" />
+			
+					State:
+					<select name="bState">
+						<option value="">Select a state</option>
+						<option value="AL">Alabama</option> 
+						<option value="AK">Alaska</option> 
+						<option value="AZ">Arizona</option> 
+						<option value="AR">Arkansas</option> 
+						<option value="CA">California</option> 
+						<option value="CO">Colorado</option> 
+						<option value="CT">Connecticut</option> 
+						<option value="DE">Delaware</option> 
+						<option value="DC">District Of Columbia</option> 
+						<option value="FL">Florida</option> 
+						<option value="GA">Georgia</option> 
+						<option value="HI">Hawaii</option> 
+						<option value="ID">Idaho</option> 
+						<option value="IL">Illinois</option> 
+						<option value="IN">Indiana</option> 
+						<option value="IA">Iowa</option> 
+						<option value="KS">Kansas</option> 
+						<option value="KY">Kentucky</option> 
+						<option value="LA">Louisiana</option> 
+						<option value="ME">Maine</option> 
+						<option value="MD">Maryland</option> 
+						<option value="MA">Massachusetts</option> 
+						<option value="MI">Michigan</option> 
+						<option value="MN">Minnesota</option> 
+						<option value="MS">Mississippi</option> 
+						<option value="MO">Missouri</option> 
+						<option value="MT">Montana</option> 
+						<option value="NE">Nebraska</option> 
+						<option value="NV">Nevada</option> 
+						<option value="NH">New Hampshire</option> 
+						<option value="NJ">New Jersey</option> 
+						<option value="NM">New Mexico</option> 
+						<option value="NY">New York</option> 
+						<option value="NC">North Carolina</option> 
+						<option value="ND">North Dakota</option> 
+						<option value="OH">Ohio</option> 
+						<option value="OK">Oklahoma</option> 
+						<option value="OR">Oregon</option> 
+						<option value="PA">Pennsylvania</option> 
+						<option value="RI">Rhode Island</option> 
+						<option value="SC">South Carolina</option> 
+						<option value="SD">South Dakota</option> 
+						<option value="TN">Tennessee</option> 
+						<option value="TX">Texas</option> 
+						<option value="UT">Utah</option> 
+						<option value="VT">Vermont</option> 
+						<option value="VA">Virginia</option> 
+						<option value="WA">Washington</option> 
+						<option value="WV">West Virginia</option> 
+						<option value="WI">Wisconsin</option> 
+						<option value="WY">Wyoming</option>
+					</select>
+
+					
+					Zip Code:
+					<input type="text" name="bZipCode" size="10" maxlength="10" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					Home Phone:
+				</td>
+
+				<td>
+
+					<input type="text" name="bHome" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-####');" />
+				</td>
+			</tr>
+			<tr>
+				<td align="right">
+					Work Phone:
+				</td>
+				<td>
+
+					<input type="text" name="bWork" size="40" maxlength="40" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+
+				</td>
+			</tr>
+		</table>
+
+		</fieldset>
+	</div> <!-- tabbertab -->
+	
+	<div class="tabbertab">
+		<h2>Insurance 1</h2>
+		<fieldset>
+			<legend>Insurance Information</legend>
+			<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td valign="top" align="right" width="135">Insurance Name: </td>
+					<td>
+						<select name="ins1_name" class="setWidth">
+							<option value=""></option>
+							<option value="None">None</option>
+							<option value="9">Aetna</option>
+							<option value="26">Amerigroup</option>
+							<option value="18">Avesis</option>
+							<option value="23">Block</option>
+							<option value="7">Blue Cross Blue Sheild of Texas</option>
+							<option value="10">Cigna</option>
+							<option value="20">Davis Vision</option>
+							<option value="5">EyeMed</option>
+							<option value="11">Great West Health Care</option>
+							<option value="25">Health Smart</option>
+							<option value="22">HealthSprings Life & Health</option>
+							<option value="12">Humana</option>
+							<option value="21">Medicaid</option>
+							<option value="13">Medicare</option>
+							<option value="14">MES Vision</option>
+							<option value="16">OptumHealth/Spectera</option>
+							<option value="27">Other/Life Inurance</option>
+							<option value="24">Parkland</option>
+							<option value="15">Secure Horizons</option>
+							<option value="6">Superior Vision</option>
+							<option value="19">TRICARE South Region</option>
+							<option value="8">United Health Care</option>
+							<option value="4">Vision Service Plan</option>						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Insurance ID:</td>
+					<td><input type="text" name="ins1_id" size="50" maxlength="50"><br></td>
+				</tr>
+				<tr>
+					<td align="right">Insurance Policy Group:</td>
+					<td><input type="text" name="ins1_pg" size="50" maxlength="50"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td align="right">Not Primary on Account:</td>
+					<td>
+						<input type="checkbox" name="ins1_not_primary"/>Not Primary
+						
+					</td>
+				</tr>
+			</table>
+
+			<fieldset>
+				<legend>Primary on Account</legend>
+	
+				<table border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td align="right">Name:</td>
+						<td><input type="text" name="ins1_p_name" size="50" maxlength="50"><span class="example">Last, First MI</span></td>
+					</tr>
+					<tr>
+						<td align="right">Relationship to Insured:</td>
+						<td>
+							<input type="radio" name="ins1_p_rel"/>Spouse 
+							<input type="radio" name="ins1_p_rel"/>Child
+							<input type="radio" name="ins1_p_rel"/>Other
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Sex:</td>
+						<td>
+							<input type="radio" name="ins1_p_sex" value="M"/> Male
+							<input type="radio" name="ins1_p_sex" value="F"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Address:</td>
+						<td><input type="text" name="ins1_p_addr" size="50" maxlength="50"/></td>
+					</tr>
+					<tr>
+						<td align="right">City:</td>
+						<td>
+							<input type="text" name="ins1_p_city" size="25" maxlength="50"/>
+							State: <input type="text" name="ins1_p_state" size="2" maxlength="2"/>
+							Zip: <input type="text" name="ins1_p_zip" size="10" maxlength="10"'>
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Phone Number:</td>
+						<td>
+							<input type="text" name="ins1_p_ph" size="50" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');">
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Birthday:</td>
+						<td>
+							<input type="text" name="ins1_p_bday" size="10" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '##/##/####');">
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Employer/School:</td>
+						<td>
+							<input type="text" name="ins1_p_emp" size="50" maxlength="50">
+						</td>
+					</tr>
+		
+				</table>
+				
+			</fieldset>
+		</fieldset>
+		
+
+	</div><!-- tabbertab -->
+
+	<div class="tabbertab">
+		<h2>Insurance 2</h2>
+		<fieldset>
+			<legend>Insurance Information</legend>
+			<table border="0" cellpadding="3" cellspacing="0">
+				<tr>
+					<td valign="top" align="right" width="135">Insurance Name: </td>
+					<td>
+						<select name="ins2_name" class="setWidth">
+							<option value=""></option>
+							<option value="None">None</option>
+							<option value="9">Aetna</option>
+							<option value="26">Amerigroup</option>
+							<option value="18">Avesis</option>
+							<option value="23">Block</option>
+							<option value="7">Blue Cross Blue Sheild of Texas</option>
+							<option value="10">Cigna</option>
+							<option value="20">Davis Vision</option>
+							<option value="5">EyeMed</option>
+							<option value="11">Great West Health Care</option>
+							<option value="25">Health Smart</option>
+							<option value="22">HealthSprings Life & Health</option>
+							<option value="12">Humana</option>
+							<option value="21">Medicaid</option>
+							<option value="13">Medicare</option>
+							<option value="14">MES Vision</option>
+							<option value="16">OptumHealth/Spectera</option>
+							<option value="27">Other/Life Inurance</option>
+							<option value="24">Parkland</option>
+							<option value="15">Secure Horizons</option>
+							<option value="6">Superior Vision</option>
+							<option value="19">TRICARE South Region</option>
+							<option value="8">United Health Care</option>
+							<option value="4">Vision Service Plan</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Insurance ID:</td>
+					<td><input type="text" name="ins2_id" size="50" maxlength="50"><br></td>
+				</tr>
+				<tr>
+					<td align="right">Insurance Policy Group:</td>
+					<td><input type="text" name="ins2_pg" size="50" maxlength="50"></td>
+				</tr>
+				<tr>
+					<td>&nbsp;</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td align="right">Not Primary on Account:</td>
+					<td>
+						<input type="checkbox" name="ins2_not_primary"/>Not Primary
+						
+					</td>
+				</tr>
+			</table>
+
+			<fieldset>
+				<legend>Primary on Account</legend>
+	
+				<table border="0" cellpadding="3" cellspacing="0">
+					<tr>
+						<td align="right">Name:</td>
+						<td><input type="text" name="ins2_p_name" size="50" maxlength="50"><span class="example">Last, First MI</span></td>
+					</tr>
+					<tr>
+						<td align="right">Relationship to Insured:</td>
+						<td>
+							<input type="radio" name="ins2_p_rel"/>Spouse 
+							<input type="radio" name="ins2_p_rel"/>Child
+							<input type="radio" name="ins2_p_rel"/>Other
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Sex:</td>
+						<td>
+							<input type="radio" name="ins2_p_sex" value="M"/> Male
+							<input type="radio" name="ins2_p_sex" value="F"/> Female
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Address:</td>
+						<td><input type="text" name="ins2_p_addr" size="50" maxlength="50"/></td>
+					</tr>
+					<tr>
+						<td align="right">City:</td>
+						<td>
+							<input type="text" name="ins2_p_city" size="25" maxlength="50"/>
+							State: <input type="text" name="ins2_p_state" size="2" maxlength="2"/>
+							Zip: <input type="text" name="ins2_p_zip" size="10" maxlength="10" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Phone Number:</td>
+						<td>
+							<input type="text" name="ins2_p_ph" size="50" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '(###) ###-##########');" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Birthday:</td>
+						<td>
+							<input type="text" name="ins2_p_bday" size="10" maxlength="50" onKeyDown="javascript:return dFilter (event.keyCode, this, '##/##/####');" />
+						</td>
+					</tr>
+					<tr>
+						<td align="right">Employer/School:</td>
+						<td>
+							<input type="text" name="ins2_p_emp" size="50" maxlength="50" />
+						</td>
+					</tr>
+		
+				</table>
+				
+			</fieldset>
+		</fieldset>
+		
+
+	</div><!-- tabbertab -->
+
+	<div class="tabbertab">
+	<h2>Medical History</h2><input type="hidden" name="med_tab"  value="History">
+
+	
+		<fieldset>
+		<legend>Your Medical Profile</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td width="150" align="right">Referred By:</td>
+					<td>
+						<select name="mc_4" size="1" class="setWidth">
+							<option value=""> </option>
+							<option value="Insurance">Insurance</option>
+							<option value="None">None</option>
+							<option value="Marcy L. Berry, M.D.">Marcy L. Berry, M.D.</option>
+							<option value="Sarah E. Rylie, M.D.">Sarah E. Rylie, M.D.</option>
+							<option value="Paul Anthony, M.D.">Paul Anthony, M.D.</option>
+							<option value="Ansuya S. Kumar, M.D.">Ansuya S. Kumar, M.D.</option>
+							<option value="Stephanie Berg, M.D.">Stephanie Berg, M.D.</option>
+							<option value="James H. Hinton III, M.D.">James H. Hinton III, M.D.</option>
+							<option value="Andrew P. Minigutti, M.D.">Andrew P. Minigutti, M.D.</option>
+							<option value="Ghufran Ahmed, M.D.">Ghufran Ahmed, M.D.</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Accompanied by:</td>
+					<td><input type="text" name='mc_839' size='50' /></td>
+				</tr>
+				<tr>
+					<td align="right">Relationship:</td>
+					<td><input type="text" name='mc_840' size='50' /></td>
+				</tr>
+				<tr>
+					<td align="right">Marital status:</td>
+					<td>
+						<select name="mc_825" size="1" class="setWidth">
+							<option value=""> </option>
+							<option value="Married">Married</option>
+							<option value="Single">Single</option>
+							<option value="Divorced">Divorced</option>
+							<option value="Widowed">Widowed</option>
+							<option value="Child">Child</option>
+							<option value="Other">Other</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Ethnicity</td>
+					<td>
+						<select name="mc_837" size="1" class="setWidth">
+							<option value=""> </option>
+							<option value="Caucasian">Caucasian</option>
+							<option value="African American">African American</option>
+							<option value="Hispanic">Hispanic</option>
+							<option value="Other">Other</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Employer/School:</td>
+					<td><input type="text" name="mc_3" size="50" />
+						<!--select name="mc_3" size="1">
+							<option value=""> </option>
+							<option value="Unknown">Unknown</option>
+						</select-->
+					</td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="mc_838" />Patient of ours</td>
+				</tr>
+				<tr>
+					<td align="right">Occupation/Grade in school</td>
+					<td><input type="text" name="mc_2" size="50" />
+						<!--select name="mc_2" size="1">
+							<option value=""> </option>
+							<option value="None reported">None reported</option>
+						</select-->
+					</td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Hobbies:</td>
+					<td><textarea cols="70" rows="2" name="mc_7"></textarea></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Medications:</td>
+					<td><textarea cols="70" rows="2" name="mc_17"></textarea></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Allergies:</td>
+					<td><textarea cols="70" rows="2" name="mc_75"></textarea></td>
+				</tr>
+				<tr>
+					<td align="right" valign="top">Past medical history:</td>
+					<td><textarea cols="70" rows="2" name="mc_18"></textarea></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td><input type="checkbox" name="mc_845" />Diabetic <input type="checkbox" name="mc_847" />Insulin</td>
+				</tr>
+				<tr>
+					<td align="right">Year diagnosed:</td>
+					<td><input type="text" name='mc_846' size='6' /></td>
+				</tr>
+				<tr>
+					<td align="right">Last BS:</td>
+					<td><input type="text" name='mc_848' size='5' /></td>
+				</tr>
+				<tr>
+					<td align="right">Date:</td>
+					<td><input type="text" name='mc_849' size='8' /></td>
+				</tr>
+				<tr>
+					<td align="right">Last A1C:</td>
+					<td><input type="text" name='mc_850' size='5' /></td>
+				</tr>
+				<tr>
+					<td align="right">Date:</td>
+					<td><input type="text" name='mc_851' size='9' /></td>
+				</tr>
+				<tr>
+					<td align="right">Notes:</td>
+					<td><input type="text" name='mc_852' size='12' /></td>
+				</tr>
+				<tr>
+					<td align="right">OTC supplements:</td>
+					<td>
+						<select name="mc_226" size="1">
+							<option value=""> </option>
+							<option value="None">None</option>
+							<option value="Advil">Advil</option>
+							<option value="Asprin">Asprin</option>
+							<option value="Ibuprofen">Ibuprofen</option>
+							<option value="Multivitamin">Multivitamin</option>
+							<option value="Ocular vitamin">Ocular vitamin</option>
+							<option value="Omega-3">Omega-3</option>
+							<option value="Vitamin A">Vitamin A</option>
+							<option value="Vitamin B">Vitamin B</option>
+							<option value="Vitamin C">Vitamin C</option>
+							<option value="Vitamin D">Vitamin D</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Tobacco use:</td>
+					<td>
+						<select name="mc_853" size="1">
+							<option value=""> </option>
+							<option value="No">No</option>
+							<option value="Yes">Yes</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Year started:</td>
+					<td><input type="text" name='mc_854' size='7' /></td>
+				</tr>
+				<tr>
+					<td align="right">Alcohol use:</td>
+					<td>
+						<select name="mc_231" size="1">
+							<option value=""> </option>
+							<option value="None">None</option>
+							<option value="Rare">Rare</option>
+							<option value="Light">Light</option>
+							<option value="Moderate">Moderate</option>
+							<option value="Heavy">Heavy</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Illegal Drugs:</td>
+					<td>
+						<select name="mc_234" size="1">
+							<option value=""> </option>
+							<option value="none">none</option>
+							<option value="marijuana">marijuana</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Pregnant Or Nursing:</td>
+					<td>
+						<select name="mc_238" size="1">
+							<option value=""> </option>
+							<option value="No">No</option>
+							<option value="Yes">Yes</option>
+							<option value="Unsure">Unsure</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td align="right">Due date/DOB:</td>
+					<td><input type="text" name='mc_856' size='12' /></td>
+				</tr>
+			</table>
+		</fieldset>
+		<fieldset>
+		<legend>Family Medical History</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td align="left" colspan="2">Any family member suffering from the following:</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">
+						<input type="checkbox" name="mc_1265" />No Problems
+						<input type="checkbox" name="mc_1266" />Diabetes
+						<input type="checkbox" name="mc_1267" />High Blood Pressure
+						<input type="checkbox" name="mc_1268" />Cancer
+					</td>
+				</tr>
+				<tr>
+					<td align="right" width="150">Relationship:</td>
+					<td><input type="text" name='mc_865' size='30'></td>
+				</tr>
+				<tr>
+					<td align="left" colspan="2">Any family member suffering from the following eye problems:</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2">
+						<input type="checkbox" name="mc_1271" />Glaucoma
+						<input type="checkbox" name="mc_1272" />Amblyopia
+						<input type="checkbox" name="mc_1273" />Cataracts
+						<input type="checkbox" name="mc_1274" />Macular Degeneration
+						<input type="checkbox" name="mc_1275" />Strabismus (eye turn)
+					</td>
+				</tr>
+				<tr>
+					<td align="right" width="150">Relationship:</td>
+					<td><input type="text" name='mc_857' size='30'></td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+
+	<div class="tabbertab">
+	<h2>Visual History</h2><input type="hidden" name="med_tab"  value="Ocular">
+	<fieldset title="Visual History">
+		<legend>Visual History</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td colspan="3">Have you ever been diagnosed of any of the following:</td>
+					<td width="50">&nbsp;</td>
+					<td colspan="2">If yes, what eye?</td>
+				</tr>
+				<tr>
+					<td width="250"></td>
+					<td width="10"><b>Yes</b></td>
+					<td width="10"><b>No</b></td>
+					<td></td>
+					<td width="10"><b>Right</b></td>
+					<td width="20"><b>Left</b></td>
+				</tr>
+				<tr>
+					<td>Glaucoma</td>
+					<td><input type="checkbox" name="mc_1288" /></td>
+					<td><input type="checkbox" name="mc_1289" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1290" /></td>
+					<td><input type="checkbox" name="mc_1291" /></td>
+				</tr>
+				<tr>
+					<td>Amblyopia (lazy eye)</td>
+					<td><input type="checkbox" name="mc_1292" /></td>
+					<td><input type="checkbox" name="mc_1293" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1294" /></td>
+					<td><input type="checkbox" name="mc_1295" /></td>
+				</tr>
+				<tr>
+					<td>Cataract</td>
+					<td><input type="checkbox" name="mc_1296" /></td>
+					<td><input type="checkbox" name="mc_1297" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1298" /></td>
+					<td><input type="checkbox" name="mc_1299" /></td>
+				</tr>
+				<tr>
+					<td>Infalmmatory disorder</td>
+					<td><input type="checkbox" name="mc_1300" /></td>
+					<td><input type="checkbox" name="mc_1301" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1302" /></td>
+					<td><input type="checkbox" name="mc_1303" /></td>
+				</tr>
+				<tr>
+					<td>Retinal problems</td>
+					<td><input type="checkbox" name="mc_1304" /></td>
+					<td><input type="checkbox" name="mc_1305" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1306" /></td>
+					<td><input type="checkbox" name="mc_1307" /></td>
+				</tr>
+				<tr>
+					<td>Macular degeneration</td>
+					<td><input type="checkbox" name="mc_1308" /></td>
+					<td><input type="checkbox" name="mc_1309" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1310" /></td>
+					<td><input type="checkbox" name="mc_1311" /></td>
+				</tr>
+				<tr>
+					<td>Strabismus</td>
+					<td><input type="checkbox" name="mc_1312" /></td>
+					<td><input type="checkbox" name="mc_1313" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1314" /></td>
+					<td><input type="checkbox" name="mc_1315" /></td>
+				</tr>
+				<tr>
+					<td>Patching</td>
+					<td><input type="checkbox" name="mc_1316" /></td>
+					<td><input type="checkbox" name="mc_1317" /></td>
+					<td></td>
+					<td><input type="checkbox" name="mc_1318" /></td>
+					<td><input type="checkbox" name="mc_1319" /></td>
+				</tr>
+				<tr>
+					<td>Eye surgery (LASIK/cataract/retinal)</td>
+					<td><input type="checkbox" name="mc_1320" /></td>
+					<td><input type="checkbox" name="mc_1321" /></td>
+					<td>Date:<input type="text" name='mc_1332' size='10' /></td>
+					<td><input type="checkbox" name="mc_1322" /></td>
+					<td><input type="checkbox" name="mc_1323" /></td>
+				</tr>
+				<tr>
+					<td>Do you sometimes experience dry eyes</td>
+					<td><input type="checkbox" name="mc_1324" /></td>
+					<td><input type="checkbox" name="mc_1325" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Are your eyes sensitive ti sunlight?</td>
+					<td><input type="checkbox" name="mc_1328" /></td>
+					<td><input type="checkbox" name="mc_1329" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Do you work at a computer?</td>
+					<td><input type="checkbox" name="mc_1326" /></td>
+					<td><input type="checkbox" name="mc_1327" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td>Do you want information on LASIK surgery?</td>
+					<td><input type="checkbox" name="mc_1330" /></td>
+					<td><input type="checkbox" name="mc_1331" /></td>
+					<td></td>
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td valign="top">Notes:</td>
+					<td colspan="5"><textarea cols="50" rows="5" name="mc_1336"></textarea></td>
+				</tr>
+			</table>
+	</fieldset>
+	<fieldset>
+			
+		<legend>Chief medical complaint</legend>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td colspan="4">Please select all that apply:</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1339" />Loss of vision</td>
+					<td><input type="checkbox" name="mc_1340" />Blurred vision</td>
+					<td><input type="checkbox" name="mc_1341" />Double vision</td>
+					<td><input type="checkbox" name="mc_1342" />Floaters</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1343" />Crossed eyes</td>
+					<td><input type="checkbox" name="mc_1344" />Flashes of light</td>
+					<td><input type="checkbox" name="mc_1345" />Eye pain/soreness</td>
+					<td><input type="checkbox" name="mc_1346" />Watery eyes</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1347" />Sandy/gritty feeling</td>
+					<td><input type="checkbox" name="mc_1348" />Glare</td>
+					<td><input type="checkbox" name="mc_1349" />Light sensitivity</td>
+					<td><input type="checkbox" name="mc_1350" />Tired eyes</td>
+				</tr>
+				<tr>
+					<td><input type="checkbox" name="mc_1351" />Dry eyes</td>
+					<td><input type="checkbox" name="mc_1352" />Red eyes</td>
+					<td><input type="checkbox" name="mc_1353" />Burning/itching</td>
+					<td></td>
+				</tr>
+			</table>
+			
+			<table>
+				<tr>
+					<td colspan="2">Can you explain in your own words the reason for your visit today:</td>
+				</tr>
+				<tr>
+					<td align="center" colspan="2"><textarea cols="70" rows="2" name="mc_204"></textarea></td>
+				</tr>
+			</table>
+			<hr/>
+			<table cellpadding="0" cellspacing="3" border="0">
+				<tr>
+					<td width="250">Which eye has the problem?</td>
+					<td>
+						<input type="checkbox" name="mc_1230" />Right
+						<input type="checkbox" name="mc_1231" />Left
+						<input type="checkbox" name="mc_1232" />Both
+					</td>
+				</tr>
+				<tr>
+					<td>Is it new, ongoing, or returning?</td>
+					<td>
+						<input type="checkbox" name="mc_1234" />New
+						<input type="checkbox" name="mc_1235" />Ongoing
+						<input type="checkbox" name="mc_1236" />Returning
+					</td>
+				</tr>
+				<tr>
+					<td>How is it effecting you??</td>
+					<td>
+						<input type="checkbox" name="mc_1238" />Bothersome
+						<input type="checkbox" name="mc_1239" />Aware
+						<input type="checkbox" name="mc_1240" />Painful
+					</td>
+				</tr>
+				<tr>
+					<td>Associated with:
+					<td colspan="2">
+						<input type="checkbox" name="mc_1242" />Infection
+						<input type="checkbox" name="mc_1243" />Medical condition
+						<input type="checkbox" name="mc_1244" />Injury
+						<input type="checkbox" name="mc_1245" />Surgery						
+					</td>
+				</tr>
+				<tr>
+					<td>How severe is the problem?</td>
+					<td>
+						<input type="checkbox" name="mc_1247" />Mild
+						<input type="checkbox" name="mc_1248" />Moderate
+						<input type="checkbox" name="mc_1249" />Severe
+					</td>
+				</tr>
+				<tr>
+					<td>Anything help improve or worsen symptoms?</td>
+					<td>
+						<input type="checkbox" name="mc_1251" />Drops
+						<input type="checkbox" name="mc_1252" />Medication
+						&nbsp;Other: <input type="text" name='mc_1253' size='32' />
+					</td>
+				</tr>
+			</table>
+	</fieldset>
+	</div> <!-- tabbertab -->
+	
+	<div class="tabbertab">
+		<h2>Submit Information</h2>
+		<fieldset>
+
+		<legend>Review</legend>
+		
+			<p>
+				Thank you for taking the time to fill out our online
+				Health History form. You may click on the tabs
+				above to review the information you have provided.
+				Click on the button below to submit your information.
+			</p>
+			<p>
+				<input type="submit" value="Submit Data">
+			</p>
+		</fieldset>
+	</div> <!-- tabbertab -->
+
+	
+</div>
+
+</form>
+
+</div> <!-- eeform class -->
+</body>
+</html>

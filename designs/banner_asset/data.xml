@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<main 
+
+	stageWidth=""
+	stageHeight=""
+	stageBgColor=""
+	stageBgTransparency=""
+	
+	imageWidth=""
+	imageHeight=""
+	imageTransitionType="auto"
+	imageResize="fit"
+	imageAlign="TL"
+	imageRandomDisplay="no"
+	imageAutoPlay="yes"
+	
+	thumbnails="yes"
+	thumbnailWidth="0"
+	thumbnailHeight="0"
+	thumbnailToThumbnailSpacing="3"
+	thumbnailsArrangeHorizontal="yes"
+	thumbnailsAutoHide="yes"
+	thumbnailsMaskSize="0"
+	thumbnailsScrollSpeed="95"
+	thumbnailsAlign="BR"
+	thumbnailsLeftSpace="0"
+	thumbnailsRightSpace="90"
+	thumbnailsTopSpace="0"
+	thumbnailsBottomSpace="7"
+
+	textEmbedFont="yes"
+	textShadowTransparency="70"
+	textShadowDistance="2"
+	
+	buttonAutoHide="yes"
+	buttonBgColor="ffffff"
+	buttonIconColor="000000"
+	buttonAutoPosition="yes"
+	
+>
+
+
+<!-- slide1  -->
+<slide 
+	image="./images/BigEye.jpg"
+	thumbnailText="1" 
+	textTransitionType=""
+	textWidth="" 
+	textAlign="BL" 
+	textLeftSpace="45" 
+	textRightSpace="0" 
+	textTopSpace="" 
+	textBottomSpace="30"
+	slideShowDelay="4"
+	url="" target="_blank">
+	<text font="2" leftMargin="" ><![CDATA[<b><font size="25" >Welcome to Complete Family Eye Care</font></b>]]></text>
+	<text font="1" leftMargin="" ><![CDATA[<font size="20"  color="#CFFAFC" >Providing comprehensive eye care of the highest quality to you and your family</font>]]></text>
+</slide>
+
+<!-- slide2  -->	
+<slide
+	image="./images/momAndGirlAtOpticalShop.jpg"
+	thumbnailText="2" 
+	textTransitionType="2"
+	textWidth=""
+	textAlign="BL" 
+	textLeftSpace="35" 
+	textRightSpace="" 
+	textTopSpace="" 
+	textBottomSpace="30" 
+	slideShowDelay="4"
+	url="" target=""> 
+	<text font="1" leftMargin="" ><![CDATA[<b><font size="25" >Eye examinations for all ages ranging from 3 year old children to adults and seniors</font></b>]]></text></slide>
+	
+<!-- slide3  -->	
+<slide
+	image="./images/OldCoupleWithGlasses.jpg"
+	thumbnailText="3"
+	textTransitionType="4"
+	textWidth="" 
+	textAlign="TR"
+	textLeftSpace="35"
+	textRightSpace="10"
+	textTopSpace=""
+	textBottomSpace="30" 
+	slideShowDelay="5"
+	url="" target="">
+	<text font="2" leftMargin="" ><![CDATA[<b><font size="25" color="#FFFAE8" >We offer high quality lenses, frames and sunglasses and a complete line of contact lenses and services.</font></b>]]></text></slide>
+
+
+</main>

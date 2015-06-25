@@ -1,0 +1,122 @@
+
+
+
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>Crystal PM Patient Forms</title>
+
+<style type="text/css">
+	
+	/* Please include these styles with the form */
+
+	body {
+		background-color: #FFFAE8;
+	}
+	
+	a {
+		color: #263889;
+		text-decoration: none;
+	}
+	
+	a:hover {
+		color: #202E6E;
+		text-decoration: underline;
+	}
+
+	p {
+		font-family: Geneva, Verdana, Trebuchet MS;
+		font-size: 9.5px;
+		margin: 3px 0px 10px 0px;
+	}
+	
+	div.eeform {
+		margin: 50px auto 50px auto;
+		width: 500px;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		font-weight: normal;
+		line-height: 16px;
+		
+		color: #000000;
+	}
+		
+		
+	div.eeform input, div.eeform textarea, div.eeform select {
+		padding: 2px;
+		margin: 6px 5px 0px 0px;
+		border: 1px solid #cccccc;
+
+		font-family: Arial, Helvetica;
+		font-size: 11px;
+		line-height: 12px;
+	}
+		
+	div.eeform hr {
+		margin: 15px 0px 15px 0px;
+		border: 0px;
+		height: 1px;
+		background-color: #cccccc;
+	}
+
+
+
+
+</style>
+
+<body>
+
+
+
+<div class="eeform">
+	<div style="text-align: center;"><img src="../images/logoWithColorBackground.gif" alt="Logo" width="175" height="81" /></div>
+
+	<b>New Patients</b>
+	<p>
+		Please <a href="newPat.html">click here</a> and complete the form before your first 
+		office visit. You may either fill out this form online or print it out and bring 
+		your completed copy to the office at the time of your appointment. 
+	</p>
+
+	
+	<p>
+		This will save you 
+		time and make the office administration process easier. If you are filling out 
+		the information online, please remember to print the form after you are done as 
+		the information is not saved for your 
+		protection.
+	</p>
+
+	<hr />
+	
+	<b>Existing Patients</b>
+	<p>
+		If you have moved or any of your patient information has changed please contact our office at 972-527-2020.
+	</p>
+	<p>
+
+		We will generate a pass code allowing you to verify and update your patient information.
+	</p>
+	
+	<form action="index.jsp">
+		Passcode: <input name="passcode" type="text" maxlength="25" value="">
+		<input name="crystalpmid" value="189" type="hidden">
+		<input name="pageid" value="2" type="hidden">
+		<input name="Submit" type="Submit" value="Log In">
+	</form>
+	
+	<hr />
+
+	
+	<p>
+		If you have any problems or questions please contact us at 972-527-2020.
+	</p>
+</div>
+
+</body>
+</html>
